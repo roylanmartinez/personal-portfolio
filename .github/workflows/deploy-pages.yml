@@ -84,6 +84,7 @@ jobs:
       - name: Build with Next.js
         env:
           EXPORT_TO_GITHUB_PAGES: "true"
+          GITHUB_PAGES_USE_SUBPATH: "false"
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

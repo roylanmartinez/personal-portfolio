@@ -1,9 +1,12 @@
 import { withContentCollections } from "@content-collections/next";
 
 const isGithubPagesExport = process.env.EXPORT_TO_GITHUB_PAGES === "true";
+const useGithubPagesSubpath = process.env.GITHUB_PAGES_USE_SUBPATH === "true";
 const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
 const hasProjectBasePath =
-  repositoryName.length > 0 && !repositoryName.endsWith(".github.io");
+  useGithubPagesSubpath &&
+  repositoryName.length > 0 &&
+  !repositoryName.endsWith(".github.io");
 const basePath = hasProjectBasePath ? `/${repositoryName}` : "";
 
 /** @type {import('next').NextConfig} */
