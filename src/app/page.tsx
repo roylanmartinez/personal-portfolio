@@ -11,31 +11,10 @@ import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { headers } from "next/headers";
+import RegionAwareDescription from "@/components/region-aware-description";
 
 const BLUR_FADE_DELAY = 0.04;
-
-const AMERICAS_COUNTRIES = new Set([
-  "AG", "AI", "AR", "AW", "BB", "BL", "BM", "BO", "BQ", "BR", "BS", "BZ", "CA", "CL", "CO",
-  "CR", "CU", "CW", "DM", "DO", "EC", "FK", "GD", "GF", "GL", "GP", "GT", "GY", "HN", "HT",
-  "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "MX", "NI", "PA", "PE", "PM", "PR", "PY", "SR",
-  "SV", "SX", "TC", "TT", "US", "UY", "VC", "VE", "VG", "VI",
-]);
-
-function getCountryCodeFromHeaders(headersList: Headers): string | null {
-  return (
-    headersList.get("x-vercel-ip-country") ??
-    headersList.get("cf-ipcountry") ??
-    headersList.get("cloudfront-viewer-country") ??
-    headersList.get("x-country-code")
-  )?.toUpperCase() ?? null;
-}
-
-export default async function Page() {
-  const headersList = await headers();
-  const countryCode = getCountryCodeFromHeaders(headersList);
-  const isAmericasVisitor = countryCode ? AMERICAS_COUNTRIES.has(countryCode) : false;
-  const description_dynamic = isAmericasVisitor ? DATA.description_americas : DATA.description;
+export default function Page() {
 
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
@@ -49,10 +28,11 @@ export default async function Page() {
                 yOffset={8}
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
-              <BlurFadeText
+              <RegionAwareDescription
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
-                text={description_dynamic}
+                europeDescription={DATA.description}
+                americasDescription={DATA.description_americas}
               />
               <BlurFade
                 delay={BLUR_FADE_DELAY * 1.2}
