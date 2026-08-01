@@ -1,3 +1,0 @@
-module.exports=[22082,a=>{"use strict";a.i(7997),a.i(99475),a.i(80677);var b=a.i(65876);a.i(56176);var c=a.i(52425);let d={alt:"Blog Post",contentType:"image/png",dynamic:"force-static",generateStaticParams:function(){return b.allPosts.map(a=>({slug:a._meta.path.replace(/\.mdx$/,"")}))},size:{width:1200,height:630}};async function e(a){let{__metadata_id__:b,...e}=await a.params,f=(0,c.fillMetadataSegment)("/blog/[slug]",e,"opengraph-image");return[function(a,b){let c={alt:a.alt,type:a.contentType||"image/png",url:f+"?55189e797daa66c7"},{size:d}=a;return d&&(c.width=d.width,c.height=d.height),c}(d,0)]}a.s(["default",0,e],22082)}];
-
-//# sourceMappingURL=src_app_blog_%5Bslug%5D_opengraph-image--metadata_e878deb3.js.map
