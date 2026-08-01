@@ -10,10 +10,33 @@ import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
 import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { headers } from "next/headers";
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default function Page() {
+const AMERICAS_COUNTRIES = new Set([
+  "AG", "AI", "AR", "AW", "BB", "BL", "BM", "BO", "BQ", "BR", "BS", "BZ", "CA", "CL", "CO",
+  "CR", "CU", "CW", "DM", "DO", "EC", "FK", "GD", "GF", "GL", "GP", "GT", "GY", "HN", "HT",
+  "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "MX", "NI", "PA", "PE", "PM", "PR", "PY", "SR",
+  "SV", "SX", "TC", "TT", "US", "UY", "VC", "VE", "VG", "VI",
+]);
+
+function getCountryCodeFromHeaders(headersList: Headers): string | null {
+  return (
+    headersList.get("x-vercel-ip-country") ??
+    headersList.get("cf-ipcountry") ??
+    headersList.get("cloudfront-viewer-country") ??
+    headersList.get("x-country-code")
+  )?.toUpperCase() ?? null;
+}
+
+export default async function Page() {
+  const headersList = await headers();
+  const countryCode = getCountryCodeFromHeaders(headersList);
+  const isAmericasVisitor = countryCode ? AMERICAS_COUNTRIES.has(countryCode) : false;
+  const description_dynamic = isAmericasVisitor ? DATA.description_americas : DATA.description;
+
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
       <section id="hero">
@@ -29,8 +52,25 @@ export default function Page() {
               <BlurFadeText
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
-                text={DATA.description}
+                text={description_dynamic}
               />
+              <BlurFade
+                delay={BLUR_FADE_DELAY * 1.2}
+                className="flex flex-wrap items-center gap-3 pt-1"
+              >
+                <p className="text-sm text-muted-foreground">
+                  {DATA.credibility.join(" · ")}
+                </p>
+                <Button asChild size="sm">
+                  <Link
+                    href={DATA.cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {DATA.cta.label}
+                  </Link>
+                </Button>
+              </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
