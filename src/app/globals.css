@@ -234,3 +234,28 @@
   }
 
 }
+
+.credibility-ticker-track {
+  animation: credibility-marquee 36s linear infinite;
+  will-change: transform;
+}
+
+.credibility-ticker:hover .credibility-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes credibility-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .credibility-ticker-track {
+    animation: none;
+  }
+}

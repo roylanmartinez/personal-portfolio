@@ -16,6 +16,7 @@ import RegionAwareMarkdown from "@/components/region-aware-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
+  const credibilityTickerItems = [...DATA.credibility, ...DATA.credibility];
 
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
@@ -37,21 +38,23 @@ export default function Page() {
               />
               <BlurFade
                 delay={BLUR_FADE_DELAY * 1.2}
-                className="flex flex-wrap items-center gap-3 pt-1"
+                className="flex flex-col items-start gap-3 pt-1"
               >
-                <div className="flex flex-wrap items-center gap-2">
-                  {DATA.credibility.map((item) => (
-                    <span
-                      key={item}
-                      className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-muted/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm sm:text-sm"
-                    >
+                <div className="credibility-ticker w-full max-w-[640px] overflow-hidden py-1">
+                  <div className="credibility-ticker-track flex w-max items-center gap-2 pr-2">
+                    {credibilityTickerItems.map((item, idx) => (
                       <span
-                        aria-hidden
-                        className="size-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-400 shadow-[0_0_0_3px_rgba(34,197,94,0.22)]"
-                      />
-                      {item}
-                    </span>
-                  ))}
+                        key={`${item}-${idx}`}
+                        className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-border/70 bg-background/85 px-3 py-1 text-xs text-muted-foreground sm:text-sm"
+                      >
+                        <span
+                          aria-hidden
+                          className="size-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-400 shadow-[0_0_0_3px_rgba(34,197,94,0.22)]"
+                        />
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <RegionAwareAmericas>
                   <div className="mt-3 flex flex-col items-start gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:gap-4">
