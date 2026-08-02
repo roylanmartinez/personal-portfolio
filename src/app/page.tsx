@@ -4,7 +4,6 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
-import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
 import ProjectsSection from "@/components/section/projects-section";
@@ -12,6 +11,8 @@ import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RegionAwareDescription from "@/components/region-aware-description";
+import RegionAwareAmericas from "../components/region-aware-americas";
+import RegionAwareMarkdown from "@/components/region-aware-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
@@ -32,27 +33,40 @@ export default function Page() {
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
                 europeDescription={DATA.description}
-                americasDescription={DATA.description_americas}
+                americasDescription={DATA.description_us}
               />
               <BlurFade
                 delay={BLUR_FADE_DELAY * 1.2}
                 className="flex flex-wrap items-center gap-3 pt-1"
               >
-                <p className="text-sm text-muted-foreground">
-                  {DATA.credibility.join(" · ")}
-                </p>
-                <Button asChild size="sm">
-                  <Link
-                    href={DATA.cta.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {DATA.cta.label}
-                  </Link>
-                </Button>
-                <p className="text-sm text-muted-foreground">
-                  Accepting a limited number of advisory engagements · booking for Q4 2026
-                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {DATA.credibility.map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-muted/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm sm:text-sm"
+                    >
+                      <span
+                        aria-hidden
+                        className="size-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-400 shadow-[0_0_0_3px_rgba(34,197,94,0.22)]"
+                      />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <RegionAwareAmericas>
+                  <Button asChild size="sm">
+                    <Link
+                      href={DATA.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {DATA.cta.label}
+                    </Link>
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Accepting a limited number of advisory engagements · booking for Q4 2026
+                  </p>
+                </RegionAwareAmericas>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
@@ -71,9 +85,10 @@ export default function Page() {
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-              <Markdown>
-                {DATA.summary}
-              </Markdown>
+              <RegionAwareMarkdown
+                europeMarkdown={DATA.summary}
+                americasMarkdown={DATA.summary_us}
+              />
             </div>
           </BlurFade>
         </div>
@@ -104,6 +119,8 @@ export default function Page() {
                 title: "FedNow & Instant-Payment Liquidity",
                 description:
                   "24/7 prefunding, liquidity-management transfers, and netting design under continuous settlement. Europe solved this with SEPA Instant and TIPS; I bring that playbook to FedNow participants.",
+                logo: "/icons/fednow.png",
+                featured: true,
               },
               {
                 title: "Data & AI Engineering for Risk Teams",
@@ -111,7 +128,28 @@ export default function Page() {
                   "Production-grade pipelines for risk analytics, document workflows, and systemic/herding risk monitoring in model-driven decisions.",
               },
             ].map((service) => (
-              <div key={service.title} className="rounded-xl border bg-background/70 p-4">
+              <div
+                key={service.title}
+                className={`rounded-xl border p-4 transition-colors ${
+                  service.featured
+                    ? "border-blue-300/70 bg-blue-50/40 dark:border-blue-500/50 dark:bg-blue-950/20"
+                    : "bg-background/70"
+                }`}
+              >
+                {service.logo && (
+                  <div className="mb-4 h-12 overflow-hidden rounded-md border bg-[#3b57a4]">
+                    <img
+                      src={service.logo}
+                      alt="FedNow instant payments"
+                      className="h-full w-full object-contain p-2"
+                    />
+                  </div>
+                )}
+                {service.featured && (
+                  <p className="mb-2 inline-flex rounded-full border border-blue-300/80 bg-blue-100/80 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-800 dark:border-blue-400/60 dark:bg-blue-900/40 dark:text-blue-200">
+                    Featured
+                  </p>
+                )}
                 <h3 className="font-semibold">{service.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
               </div>

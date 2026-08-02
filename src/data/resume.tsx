@@ -1,12 +1,16 @@
 import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Typescript } from "@/components/ui/svgs/typescript";
+import { Dax } from "@/components/ui/svgs/dax";
+import { ROfficial } from "@/components/ui/svgs/rOfficial";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
 import { Golang } from "@/components/ui/svgs/golang";
+import { Azure } from "@/components/ui/svgs/azure";
 import { Postgresql } from "@/components/ui/svgs/postgresql";
+import { PowerBi } from "@/components/ui/svgs/powerbi";
+import { Sas } from "@/components/ui/svgs/sas";
+import { Celonis } from "@/components/ui/svgs/celonis";
 import { Docker } from "@/components/ui/svgs/docker";
 import { Kubernetes } from "@/components/ui/svgs/kubernetes";
 import { Java } from "@/components/ui/svgs/java";
@@ -20,28 +24,34 @@ export const DATA = {
   locationLink: "https://www.google.com/maps/place/barcelona",
   description:
     "Data Specialist focused on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
-  description_americas:
+  description_us:
     "Independent advisory for U.S. financial institutions on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
   credibility: [
     "Model Risk Management at a major European bank",
-    "Former Allianz AI Data Scientist",
-    "Doctoral researcher in optimization & statistics",
+    "Former AI Data Scientist in Center of Excellence in Automation & AI",
+    "Doctoral researcher in Optimization & Statistics",
     "Published researcher on payment clearing and benchmark-rate modeling",
   ],
   cta: {
     label: "Request a 20-minute intro call",
     href: "mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call",
   },
-  summary:
+  summary_us:
     "Most of my work sits where financial risk, regulation, and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning, and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to independent advisory work for regulated financial institutions on adversarial-resilient AI systems, FedNow and RTP liquidity management under ISO 20022 messaging, and systemic/herding risk in model-driven decisions.",
+  summary:
+    "Most of my work sits where financial risk, regulation, and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning, and agentic AI systems. I work across EU supervisory expectations, including ECB/EBA guidance. I bring that practitioner perspective to independent advisory work for regulated financial institutions on adversarial-resilient AI systems, FedNow and RTP liquidity management under ISO 20022 messaging, and systemic/herding risk in model-driven decisions.",
   avatarUrl: "/me.png",
   skills: [
-    { name: "Python", icon: Python },
-    { name: "SQL", icon: Postgresql },
-    { name: "R", icon: Typescript },
-    { name: "Azure AI Foundry", icon: Docker },
+    { name: "Python (6+ years)", icon: Python },
+    { name: "SQL (Transact-SQL, PROC SQL)", icon: Postgresql },
+    { name: "DAX", icon: Dax },
+    { name: "R", icon: ROfficial },
+    { name: "C", icon: Csharp },
+    { name: "Microsoft Azure (Cloud Services, Synapse, Foundry)", icon: Azure },
     { name: "Docker", icon: Docker },
-    { name: "Power BI", icon: ReactLight },
+    { name: "SAS", icon: Sas },
+    { name: "Celonis", icon: Celonis },
+    { name: "Power BI", icon: PowerBi },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -79,12 +89,12 @@ export const DATA = {
   },
   work: [
     {
-      company: "Major European Bank (confidential)",
-      href: "#",
+      company: "Banco Sabadell",
+      href: "https://bancosabadell.com/",
       badges: [],
       location: "Barcelona, Spain",
       title: "Risk Data Specialist | Model Risk Management",
-      logoUrl: "",
+      logoUrl: "/sabadell.png",
       start: "Apr 2026",
       end: "Present",
       description:
@@ -109,8 +119,8 @@ export const DATA = {
       location: "Madrid, Spain",
       title: "Pricing Data Scientist | Technical Pricing",
       logoUrl: "/allianz.png",
-      start: "Nov 2025",
-      end: "May 2024",
+      start: "May 2024",
+      end: "Nov 2025",
       description:
         "My responsabilities have to do with the refinement and the contribution to the development of pricing policies and portfolio defense using machine learning models.",
     },
@@ -122,7 +132,7 @@ export const DATA = {
       title: "Data Scientist | Quality & Fraud",
       logoUrl: "/allianz.png",
       start: "Apr 2023",
-      end: "Feb 2024",
+      end: "May 2024",
       description:
         "Delivered machine-learning, ETL, and process-mining solutions for payment analysis and fraud detection; automated review workflows and saved one full FTE of manual work.",
     },
@@ -131,13 +141,13 @@ export const DATA = {
     {
       school: "Polytechnic University of Valencia",
       href: "https://www.upv.es",
-      degree: "Doctoral research in Optimization & Statistics (in progress)",
+      degree: "Phd in Optimization & Statistics",
       logoUrl: "/upv.png",
       start: "2026",
       end: "Present",
     },
     {
-      school: "University of Valencia & Polytechnic University of Valencia",
+      school: "University of Valencia",
       href: "https://www.uv.es",
       degree: "MSc in Mathematics (research)",
       logoUrl: "/uv.png",
