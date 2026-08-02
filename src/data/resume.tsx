@@ -19,9 +19,9 @@ export const DATA = {
   location: "Barcelona, Spain",
   locationLink: "https://www.google.com/maps/place/barcelona",
   description:
-    "Independent advisory for U.S. financial institutions on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
-  description_americas:
     "Data Specialist focused on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
+  description_americas:
+    "Independent advisory for U.S. financial institutions on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
   credibility: [
     "Model Risk Management at a major European bank",
     "Former Allianz AI Data Scientist",
