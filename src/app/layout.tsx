@@ -24,13 +24,13 @@ const clashDisplay = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: `${DATA.name} — AI Model Risk & Payments Advisory`,
+    default: `${DATA.name} - AI Model Risk & Payments Advisory`,
     template: `%s | ${DATA.name}`,
   },
-  description: "Independent advisor to financial institutions on adversarial-resilient AI model risk, FedNow and RTP liquidity management, and payment clearing optimization under ISO 20022.",
+  description: "Independent advisor to financial institutions on adversarial-resilient AI model risk, FedNow and RTP liquidity management and payment clearing optimization under ISO 20022.",
   openGraph: {
-    title: `${DATA.name} — AI Model Risk & Payments Advisory`,
-    description: "Independent advisor to financial institutions on adversarial-resilient AI model risk, FedNow and RTP liquidity management, and payment clearing optimization under ISO 20022.",
+    title: `${DATA.name} - AI Model Risk & Payments Advisory`,
+    description: "Independent advisor to financial institutions on adversarial-resilient AI model risk, FedNow and RTP liquidity management and payment clearing optimization under ISO 20022.",
     url: DATA.url,
     siteName: `${DATA.name}`,
     locale: "en_US",

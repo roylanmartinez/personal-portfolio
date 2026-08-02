@@ -19,10 +19,21 @@ export default function RegionAwareDescription({
 }: RegionAwareDescriptionProps) {
 	const { region } = useRegionVariant();
 	const description = region === "americas" ? americasDescription : europeDescription;
+	const descriptionParts = description.split(/(FedNow)/g);
 
 	return (
 		<BlurFade delay={delay}>
-			<p className={cn(className)}>{description}</p>
+			<p className={cn(className)}>
+				{descriptionParts.map((part, index) =>
+					part === "FedNow" ? (
+						<strong key={index} className="text-black dark:text-white">
+							{part}
+						</strong>
+					) : (
+						part
+					),
+				)}
+			</p>
 		</BlurFade>
 	);
 }

@@ -23,9 +23,9 @@ export const DATA = {
   location: "Barcelona, Spain",
   locationLink: "https://www.google.com/maps/place/barcelona",
   description:
-    "Data Specialist focused on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
+    "Data Specialist focused on AI/agentic model risk, FedNow expansion readiness, liquidity management and payment-clearing optimization.",
   description_us:
-    "Independent advisory for U.S. financial institutions on AI/agentic model risk, FedNow expansion readiness, liquidity management, and payment-clearing optimization.",
+    "Independent advisory for U.S. financial institutions on AI/agentic model risk, FedNow expansion readiness, liquidity management and payment-clearing optimization.",
   credibility: [
     "Model Risk Management at a major European bank",
     "Former AI Data Scientist in Center of Excellence in Automation & AI",
@@ -37,9 +37,9 @@ export const DATA = {
     href: "mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call",
   },
   summary_us:
-    "Most of my work sits where financial risk, regulation, and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning, and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to independent advisory work for regulated financial institutions on adversarial-resilient AI systems, FedNow and RTP liquidity management under ISO 20022 messaging, and systemic/herding risk in model-driven decisions.",
+    "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to independent advisory work for regulated financial institutions on adversarial-resilient AI systems, FedNow and RTP liquidity management under ISO 20022 messaging and systemic/herding risk in model-driven decisions.",
   summary:
-    "Most of my work sits where financial risk, regulation, and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across EU supervisory expectations, including ECB/EBA guidance.",
+    "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across EU supervisory expectations, including ECB/EBA guidance.",
   avatarUrl: "/me.png",
   skills: [
     { name: "Python (6+ years)", icon: Python },
@@ -98,7 +98,7 @@ export const DATA = {
       start: "Apr 2026",
       end: "Present",
       description:
-        "Governing the end-to-end lifecycle of the bank's quantitative and AI models — IRB, capital, IRRBB, machine learning, and agentic AI — and shaping how the model risk framework evolves to cover emerging AI use cases.",
+        "Governing the end-to-end lifecycle of the bank's quantitative and AI models - IRB, capital, IRRBB, machine learning and agentic AI - and shaping how the model risk framework evolves to cover emerging AI use cases.",
     },
     {
       company: "Allianz",
@@ -134,7 +134,7 @@ export const DATA = {
       start: "Apr 2023",
       end: "May 2024",
       description:
-        "Delivered machine-learning, ETL, and process-mining solutions for payment analysis and fraud detection; automated review workflows and saved one full FTE of manual work.",
+        "Delivered machine-learning, ETL and process-mining solutions for payment analysis and fraud detection; automated review workflows and saved one full FTE of manual work.",
     },
   ],
   education: [
@@ -170,7 +170,7 @@ export const DATA = {
       dates: "2023",
       active: true,
       description:
-        "Built an end-to-end ML solution for payment analysis and fraud flagging, covering data modeling, ETL, and deployment so the team could automate review work that had previously required one full FTE.",
+        "Built an end-to-end ML solution for payment analysis and fraud flagging, covering data modeling, ETL and deployment so the team could automate review work that had previously required one full FTE.",
       technologies: ["Python", "Azure", "ML", "ETL"],
       label: "In-house project at Allianz",
       links: [
@@ -205,7 +205,7 @@ export const DATA = {
     {
       title: "Clearing optimization, open-sourced",
       href: "https://github.com/roylanmartinez/Payment_Clearing",
-      dates: "2023 – Present",
+      dates: "2023 - Present",
       active: true,
       description:
         "Released an implementation of the netting and clearing-optimization methods from my published research as an open-source library, giving practitioners a practical entry point into the mathematics behind payment clearing.",

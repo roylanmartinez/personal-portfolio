@@ -1,6 +1,6 @@
 # roylanmartinez.com
 
-Personal portfolio for Roylan Martinez, focused on AI model risk, instant-payment liquidity, and payment-clearing optimization.
+Personal portfolio for Roylan Martinez, focused on AI model risk, instant-payment liquidity and payment-clearing optimization.
 
 Production site: https://roylanmartinez.com
 Booking: mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call

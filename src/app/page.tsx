@@ -54,18 +54,20 @@ export default function Page() {
                   ))}
                 </div>
                 <RegionAwareAmericas>
-                  <Button asChild size="sm">
-                    <Link
-                      href={DATA.cta.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {DATA.cta.label}
-                    </Link>
-                  </Button>
-                  <p className="text-sm text-muted-foreground">
-                    Accepting a limited number of advisory engagements · booking for Q4 2026
-                  </p>
+                  <div className="mt-3 flex flex-col items-start gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:gap-4">
+                    <Button asChild size="sm" className="shrink-0">
+                      <Link
+                        href={DATA.cta.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {DATA.cta.label}
+                      </Link>
+                    </Button>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      Accepting a limited number of advisory engagements · booking for Q4 2026
+                    </p>
+                  </div>
                 </RegionAwareAmericas>
               </BlurFade>
             </div>
@@ -105,7 +107,7 @@ export default function Page() {
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 5.3}>
             <p className="text-sm text-muted-foreground">
-              Focused engagements, typically 2–12 weeks, in three areas.
+              Focused engagements, typically 2-12 weeks, in three areas.
             </p>
           </BlurFade>
           <div className="grid gap-3 md:grid-cols-3">
@@ -113,19 +115,24 @@ export default function Page() {
               {
                 title: "AI & Agentic Model Risk",
                 description:
-                  "Validation frameworks for adversarial-resilient AI systems and agentic workflows in regulated environments, including inventory, challenge, and control design.",
+                  "Validation frameworks for adversarial-resilient AI systems and agentic workflows in regulated environments, including inventory, challenge and control design.",
+                logo: "/mitigation.png",
+                logoAlt: "AI and agentic risk mitigation",
               },
               {
                 title: "FedNow & Instant-Payment Liquidity",
                 description:
-                  "24/7 prefunding, liquidity-management transfers, and netting design under continuous settlement. Europe solved this with SEPA Instant and TIPS; I bring that playbook to FedNow participants.",
+                  "24/7 prefunding, liquidity-management transfers and netting design under continuous settlement. Europe solved this with SEPA Instant and TIPS; I bring that playbook to FedNow participants.",
                 logo: "/icons/fednow.png",
+                logoAlt: "FedNow instant payments",
                 featured: true,
               },
               {
-                title: "Data & AI Engineering for Risk Teams",
+                title: "Data & AI Engineering pipelines",
                 description:
-                  "Production-grade pipelines for risk analytics, document workflows, and systemic/herding risk monitoring in model-driven decisions.",
+                  "Production-grade pipelines for risk analytics, document workflows and systemic/herding risk monitoring in model-driven decisions.",
+                logo: "/generative.png",
+                logoAlt: "Generative AI and data engineering",
               },
             ].map((service) => (
               <div
@@ -137,10 +144,14 @@ export default function Page() {
                 }`}
               >
                 {service.logo && (
-                  <div className="mb-4 h-12 overflow-hidden rounded-md border bg-[#3b57a4]">
+                  <div
+                    className={`mb-4 h-12 overflow-hidden rounded-md ${
+                      service.featured ? "bg-[#3b57a4]" : "bg-white"
+                    }`}
+                  >
                     <img
                       src={service.logo}
-                      alt="FedNow instant payments"
+                      alt={service.logoAlt ?? service.title}
                       className="h-full w-full object-contain p-2"
                     />
                   </div>
