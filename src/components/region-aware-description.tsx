@@ -1,64 +1,43 @@
 "use client";
 
-import BlurFadeText from "@/components/magicui/blur-fade-text";
+import BlurFade from "@/components/magicui/blur-fade";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
-type RegionAwareDescriptionProps = {
-  europeDescription: string;
-  americasDescription: string;
-  className?: string;
-  delay?: number;
-};
-
-const AMERICAS_COUNTRIES = new Set([
-  "AG", "AI", "AR", "AW", "BB", "BL", "BM", "BO", "BQ", "BR", "BS", "BZ", "CA", "CL", "CO",
-  "CR", "CU", "CW", "DM", "DO", "EC", "FK", "GD", "GF", "GL", "GP", "GT", "GY", "HN", "HT",
-  "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "MX", "NI", "PA", "PE", "PM", "PR", "PY", "SR",
-  "SV", "SX", "TC", "TT", "US", "UY", "VC", "VE", "VG", "VI",
-]);
-
-function getCountryFromLocale(locale: string): string | null {
-  const parts = locale.split("-");
-  return parts.length > 1 ? parts[parts.length - 1].toUpperCase() : null;
+interface RegionAwareDescriptionProps {
+	className?: string;
+	delay?: number;
+	europeDescription: string;
+	americasDescription: string;
 }
 
-function isAmericasByTimezone(timeZone: string | undefined): boolean {
-  if (!timeZone) return false;
-  return timeZone.startsWith("America/");
-}
+function isLikelyAmericasUser(): boolean {
+	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+	if (timeZone?.startsWith("America/")) {
+		return true;
+	}
 
-function shouldUseAmericasDescription(): boolean {
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if (isAmericasByTimezone(timeZone)) {
-    return true;
-  }
-
-  const locales = navigator.languages?.length ? navigator.languages : [navigator.language];
-  for (const locale of locales) {
-    const country = getCountryFromLocale(locale);
-    if (country && AMERICAS_COUNTRIES.has(country)) {
-      return true;
-    }
-  }
-
-  return false;
+	const locale = typeof navigator !== "undefined" ? navigator.language : "";
+	return /-(US|CA|MX|BR|AR|CL|CO|PE|UY|PA|CR|GT|HN|NI|SV|DO|PR)\b/i.test(locale);
 }
 
 export default function RegionAwareDescription({
-  europeDescription,
-  americasDescription,
-  className,
-  delay,
+	className,
+	delay,
+	europeDescription,
+	americasDescription,
 }: RegionAwareDescriptionProps) {
-  const [description, setDescription] = useState(europeDescription);
+	const [description, setDescription] = useState(europeDescription);
 
-  useEffect(() => {
-    if (shouldUseAmericasDescription()) {
-      setDescription(americasDescription);
-    } else {
-      setDescription(europeDescription);
-    }
-  }, [americasDescription, europeDescription]);
+	useEffect(() => {
+		if (isLikelyAmericasUser()) {
+			setDescription(americasDescription);
+		}
+	}, [americasDescription]);
 
-  return <BlurFadeText text={description} className={className} delay={delay} />;
+	return (
+		<BlurFade delay={delay}>
+			<p className={cn(className)}>{description}</p>
+		</BlurFade>
+	);
 }

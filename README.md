@@ -1,10 +1,10 @@
-<div align="center">
-<img alt="Portfolio" src="https://github.com/dillionverma/portfolio/assets/16860528/57ffca81-3f0a-4425-b31d-094f61725455" width="90%">
-</div>
+# roylanmartinez.com
 
-# Portfolio [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdillionverma%2Fportfolio)
+Personal portfolio for Roylan Martinez, focused on AI model risk, instant-payment liquidity, and payment-clearing optimization.
 
-Built with next.js, [shadcn/ui](https://ui.shadcn.com/), and [magic ui](https://magicui.design/), deployed on Vercel.
+Production site: https://roylanmartinez.com
+Booking: mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call
+Contact: hello@roylanmartinez.com
 
 # Features
 

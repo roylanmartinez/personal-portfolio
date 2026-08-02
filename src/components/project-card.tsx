@@ -30,6 +30,7 @@ interface Props {
   href?: string;
   description: string;
   dates: string;
+  label?: string;
   tags: readonly string[];
   link?: string;
   image?: string;
@@ -47,6 +48,7 @@ export function ProjectCard({
   href,
   description,
   dates,
+  label,
   tags,
   link,
   image,
@@ -106,6 +108,11 @@ export function ProjectCard({
         )}
       </div>
       <div className="p-6 flex flex-col gap-3 flex-1">
+        {label && (
+          <Badge className="w-fit text-[10px] uppercase tracking-wide" variant="secondary">
+            {label}
+          </Badge>
+        )}
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>

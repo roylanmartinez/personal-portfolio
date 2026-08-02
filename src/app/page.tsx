@@ -50,6 +50,9 @@ export default function Page() {
                     {DATA.cta.label}
                   </Link>
                 </Button>
+                <p className="text-sm text-muted-foreground">
+                  Accepting a limited number of advisory engagements · booking for Q4 2026
+                </p>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
@@ -73,6 +76,72 @@ export default function Page() {
               </Markdown>
             </div>
           </BlurFade>
+        </div>
+      </section>
+      <section id="services">
+        <div className="flex min-h-0 flex-col gap-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 5}>
+            <h2 className="text-xl font-bold">How I can help</h2>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 5.2}>
+            <p className="text-sm font-medium text-foreground">
+              Entry-point offer: FedNow liquidity readiness assessment - fixed scope, 2 weeks.
+            </p>
+          </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 5.3}>
+            <p className="text-sm text-muted-foreground">
+              Focused engagements, typically 2–12 weeks, in three areas.
+            </p>
+          </BlurFade>
+          <div className="grid gap-3 md:grid-cols-3">
+            {[
+              {
+                title: "AI & Agentic Model Risk",
+                description:
+                  "Validation frameworks for adversarial-resilient AI systems and agentic workflows in regulated environments, including inventory, challenge, and control design.",
+              },
+              {
+                title: "FedNow & Instant-Payment Liquidity",
+                description:
+                  "24/7 prefunding, liquidity-management transfers, and netting design under continuous settlement. Europe solved this with SEPA Instant and TIPS; I bring that playbook to FedNow participants.",
+              },
+              {
+                title: "Data & AI Engineering for Risk Teams",
+                description:
+                  "Production-grade pipelines for risk analytics, document workflows, and systemic/herding risk monitoring in model-driven decisions.",
+              },
+            ].map((service) => (
+              <div key={service.title} className="rounded-xl border bg-background/70 p-4">
+                <h3 className="font-semibold">{service.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section id="proof-assets">
+        <div className="flex min-h-0 flex-col gap-y-4">
+          <BlurFade delay={BLUR_FADE_DELAY * 6}>
+            <h2 className="text-xl font-bold">Proof assets</h2>
+          </BlurFade>
+          <div className="grid gap-3 md:grid-cols-2">
+            {DATA.proofAssets.map((asset, idx) => (
+              <BlurFade key={asset.title} delay={BLUR_FADE_DELAY * 6.2 + idx * 0.05}>
+                <div className="rounded-xl border bg-background/70 p-4">
+                  <h3 className="font-semibold">{asset.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{asset.description}</p>
+                  <Link
+                    href={asset.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center text-sm font-medium text-blue-600 hover:underline underline-offset-4"
+                  >
+                    {asset.cta}
+                  </Link>
+                </div>
+              </BlurFade>
+            ))}
+          </div>
         </div>
       </section>
       <section id="work">

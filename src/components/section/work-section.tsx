@@ -33,12 +33,15 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 export default function WorkSection() {
   return (
     <Accordion type="single" collapsible className="w-full grid gap-6">
-      {DATA.work.map((work) => (
-        <AccordionItem
-          key={work.company}
-          value={work.company}
-          className="w-full border-b-0 grid gap-2"
-        >
+      {DATA.work.map((work, index) => {
+        const uniqueValue = `${work.company}-${work.title}-${index}`;
+
+        return (
+          <AccordionItem
+            key={uniqueValue}
+            value={uniqueValue}
+            className="w-full border-b-0 grid gap-2"
+          >
           <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
             <div className="flex items-center gap-x-3 justify-between w-full text-left">
               <div className="flex items-center gap-x-3 flex-1 min-w-0">
@@ -79,8 +82,9 @@ export default function WorkSection() {
           <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
             {work.description}
           </AccordionContent>
-        </AccordionItem>
-      ))}
+          </AccordionItem>
+        );
+      })}
     </Accordion>
   );
 }
