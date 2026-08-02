@@ -3,6 +3,8 @@
 import { ImageResponse } from "next/og";
 import { allPosts } from "content-collections";
 import { DATA } from "@/data/resume";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 export const dynamic = "force-static";
 
@@ -22,18 +24,8 @@ export function generateStaticParams() {
 const getFontData = async () => {
     try {
         const [cabinetGrotesk, clashDisplay] = await Promise.all([
-            fetch(
-                new URL(
-                    "../../../../public/fonts/CabinetGrotesk-Medium.ttf",
-                    import.meta.url
-                )
-            ).then((res) => res.arrayBuffer()),
-            fetch(
-                new URL(
-                    "../../../../public/fonts/ClashDisplay-Semibold.ttf",
-                    import.meta.url
-                )
-            ).then((res) => res.arrayBuffer()),
+            readFile(path.join(process.cwd(), "public", "fonts", "CabinetGrotesk-Medium.ttf")),
+            readFile(path.join(process.cwd(), "public", "fonts", "ClashDisplay-Semibold.ttf")),
         ]);
         return { cabinetGrotesk, clashDisplay };
     } catch (error) {

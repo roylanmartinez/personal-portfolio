@@ -64,11 +64,13 @@ export function RegionProvider({
   initialRegion,
 }: {
   children: React.ReactNode;
-  initialRegion: RegionVariant;
+  initialRegion?: RegionVariant;
 }) {
+  const fallbackRegion = initialRegion ?? "europe";
+
   const [region, setRegion] = useState<RegionVariant>(() => {
     if (typeof window === "undefined") {
-      return initialRegion;
+      return fallbackRegion;
     }
 
     const queryRegion = parseRegionFromQuery(window.location.search);
@@ -81,7 +83,7 @@ export function RegionProvider({
       return savedOverride;
     }
 
-    return initialRegion;
+    return fallbackRegion;
   });
   const showRegionToggle = true;
 
@@ -111,7 +113,7 @@ export function RegionProvider({
     return () => {
       cancelled = true;
     };
-  }, [initialRegion]);
+  }, [fallbackRegion]);
 
   const toggleRegion = () => {
     setRegion((current) => {
