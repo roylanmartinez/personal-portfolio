@@ -3,9 +3,11 @@ import { RegionProvider } from "@/components/region-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import { regionFromHeaderCountry } from "@/lib/region";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
@@ -57,11 +59,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const requestHeaders = await headers();
+  const countryCodeHeader =
+    requestHeaders.get("x-vercel-ip-country") ??
+    requestHeaders.get("cf-ipcountry") ??
+    requestHeaders.get("x-country-code") ??
+    undefined;
+
+  const initialRegion = regionFromHeaderCountry(countryCodeHeader);
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -72,7 +83,7 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light"  enableSystem={false}>
-          <RegionProvider>
+          <RegionProvider initialRegion={initialRegion}>
             <TooltipProvider delayDuration={0}>
               <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
                 <FlickeringGrid

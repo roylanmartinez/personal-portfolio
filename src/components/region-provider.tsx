@@ -1,8 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-
-type RegionVariant = "americas" | "europe";
+import { regionFromCountryCode, type RegionVariant } from "@/lib/region";
 
 interface RegionContextValue {
   region: RegionVariant;
@@ -10,60 +9,7 @@ interface RegionContextValue {
   showRegionToggle: boolean;
 }
 
-const STORAGE_KEY = "dev-region-variant";
-const EUROPEAN_TIMEZONES = new Set(["Atlantic/Canary", "Atlantic/Madeira", "Africa/Ceuta"]);
-const EUROPEAN_COUNTRY_CODES = new Set([
-  "AL",
-  "AD",
-  "AM",
-  "AT",
-  "AZ",
-  "BY",
-  "BE",
-  "BA",
-  "BG",
-  "HR",
-  "CY",
-  "CZ",
-  "DK",
-  "EE",
-  "FI",
-  "FR",
-  "GE",
-  "DE",
-  "GR",
-  "HU",
-  "IS",
-  "IE",
-  "IT",
-  "XK",
-  "LV",
-  "LI",
-  "LT",
-  "LU",
-  "MT",
-  "MD",
-  "MC",
-  "ME",
-  "NL",
-  "MK",
-  "NO",
-  "PL",
-  "PT",
-  "RO",
-  "RU",
-  "SM",
-  "RS",
-  "SK",
-  "SI",
-  "ES",
-  "SE",
-  "CH",
-  "TR",
-  "UA",
-  "GB",
-  "VA",
-]);
+const OVERRIDE_STORAGE_KEY = "dev-region-variant-override";
 
 const RegionContext = createContext<RegionContextValue | undefined>(undefined);
 
@@ -86,15 +32,6 @@ function parseRegionFromQuery(search: string): RegionVariant | undefined {
   return undefined;
 }
 
-function getRegionFromTimezone(): RegionVariant {
-  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  if (timeZone?.startsWith("Europe/") || EUROPEAN_TIMEZONES.has(timeZone)) {
-    return "europe";
-  }
-
-  return "americas";
-}
-
 async function getRegionFromIp(): Promise<RegionVariant> {
   try {
     const response = await fetch("https://ipapi.co/json/", {
@@ -110,23 +47,42 @@ async function getRegionFromIp(): Promise<RegionVariant> {
       continent_code?: string;
     };
 
-    const countryCode = payload.country_code?.toUpperCase();
-    if (countryCode && EUROPEAN_COUNTRY_CODES.has(countryCode)) {
-      return "europe";
-    }
+    const inferredRegion = regionFromCountryCode(payload.country_code);
 
     if (payload.continent_code === "EU") {
       return "europe";
     }
 
-    return "americas";
+    return inferredRegion;
   } catch {
     return "americas";
   }
 }
 
-export function RegionProvider({ children }: { children: React.ReactNode }) {
-  const [region, setRegion] = useState<RegionVariant>("europe");
+export function RegionProvider({
+  children,
+  initialRegion,
+}: {
+  children: React.ReactNode;
+  initialRegion: RegionVariant;
+}) {
+  const [region, setRegion] = useState<RegionVariant>(() => {
+    if (typeof window === "undefined") {
+      return initialRegion;
+    }
+
+    const queryRegion = parseRegionFromQuery(window.location.search);
+    if (queryRegion) {
+      return queryRegion;
+    }
+
+    const savedOverride = localStorage.getItem(OVERRIDE_STORAGE_KEY);
+    if (savedOverride === "americas" || savedOverride === "europe") {
+      return savedOverride;
+    }
+
+    return initialRegion;
+  });
   const showRegionToggle = true;
 
   useEffect(() => {
@@ -134,19 +90,14 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
     const queryRegion = parseRegionFromQuery(window.location.search);
 
     if (queryRegion) {
-      setRegion(queryRegion);
-      localStorage.setItem(STORAGE_KEY, queryRegion);
+      localStorage.setItem(OVERRIDE_STORAGE_KEY, queryRegion);
       return;
     }
 
-    const savedRegion = localStorage.getItem(STORAGE_KEY);
-    if (savedRegion === "americas" || savedRegion === "europe") {
-      setRegion(savedRegion);
+    const savedOverride = localStorage.getItem(OVERRIDE_STORAGE_KEY);
+    if (savedOverride === "americas" || savedOverride === "europe") {
       return;
     }
-
-    const timezoneRegion = getRegionFromTimezone();
-    setRegion(timezoneRegion);
 
     void (async () => {
       const ipRegion = await getRegionFromIp();
@@ -155,18 +106,17 @@ export function RegionProvider({ children }: { children: React.ReactNode }) {
       }
 
       setRegion(ipRegion);
-      localStorage.setItem(STORAGE_KEY, ipRegion);
     })();
 
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [initialRegion]);
 
   const toggleRegion = () => {
     setRegion((current) => {
       const next = current === "americas" ? "europe" : "americas";
-      localStorage.setItem(STORAGE_KEY, next);
+      localStorage.setItem(OVERRIDE_STORAGE_KEY, next);
       return next;
     });
   };
