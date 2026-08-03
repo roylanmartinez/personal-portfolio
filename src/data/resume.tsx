@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { FileDownIcon, HomeIcon } from "lucide-react";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Dax } from "@/components/ui/svgs/dax";
 import { ROfficial } from "@/components/ui/svgs/rOfficial";
@@ -17,6 +17,7 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 
 export const DATA = {
+  regionToggleEnabled: false,
   name: "Roylan Martinez",
   initials: "RM",
   url: "https://roylanmartinez.com",
@@ -36,11 +37,10 @@ export const DATA = {
     label: "Request a 20-minute intro call",
     href: "mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call",
   },
-  regionToggleEnabled: false,
-  summary_us:
-    "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to independent advisory work for regulated financial institutions on adversarial-resilient AI systems, FedNow and RTP liquidity management under ISO 20022 messaging and systemic/herding risk in model-driven decisions.",
+summary_us:
+    "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with [published research](https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98) on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and [benchmark-rate modeling](https://panorama.upv.es/en/ipublic/item/10956963). Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to [independent advisory work](/#how-i-can-help) for regulated financial institutions on adversarial-resilient AI systems, [FedNow and RTP liquidity management](/#how-i-can-help) under ISO 20022 messaging and systemic/herding risk in model-driven decisions.",
   summary:
-    "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across EU supervisory expectations, including ECB/EBA guidance.",
+"Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with [published research](https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98) on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across EU supervisory expectations, including [ECB/EBA guidance](https://www.eba.europa.eu/regulation-and-policy).",
   avatarUrl: "/me.png",
   skills: [
     { name: "Python (6+ years)", icon: Python },
@@ -56,7 +56,13 @@ export const DATA = {
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Insights" },
+    {
+      href: "/resume.pdf",
+      icon: FileDownIcon,
+      label: "Resume",
+      region: "americas",
+      download: true,
+    },
   ],
   contact: {
     email: "hello@roylanmartinez.com",
@@ -76,7 +82,7 @@ export const DATA = {
       },
       GoogleScholar: {
         name: "Google Scholar",
-        url: "https://scholar.google.com/citations?view_op=search_authors&mauthors=Roylan+Martinez",
+        url: "https://scholar.google.com/citations?user=2oaaaeQAAAAJ&hl=en",
         icon: Icons.globe,
         navbar: true,
       },
@@ -150,7 +156,7 @@ export const DATA = {
     {
       school: "University of Valencia",
       href: "https://www.uv.es",
-      degree: "MSc in Mathematics (research)",
+      degree: "MSc in Mathematics research",
       logoUrl: "/uv.png",
       start: "2023",
       end: "2025",
@@ -181,26 +187,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "",
-      video: "",
-    },
-    {
-      title: "In-house project at Allianz: replacing cloud OCR with a leaner LLM pipeline",
-      href: "https://www.allianz.com/",
-      dates: "2025",
-      active: true,
-      description:
-        "Engineered a raw byte-stream chunking approach that fed documents directly into LLM workflows, removing a costly OCR dependency and improving throughput for document-heavy operations.",
-      technologies: ["Python", "LLM", "Azure", "Pipelines"],
-      label: "In-house project at Allianz",
-      links: [
-        {
-          type: "Employer",
-          href: "https://www.allianz.com/",
-          icon: <Icons.globe className="size-3" />,
-        },
-      ],
-      image: "",
+      image: "/allianz.gif",
       video: "",
     },
     {
@@ -224,7 +211,26 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "",
+      image: "/graph.gif",
+      video: "",
+    },
+    {
+      title: "In-house project at Allianz: replacing cloud OCR with a leaner LLM pipeline",
+      href: "https://www.allianz.com/",
+      dates: "2025",
+      active: true,
+      description:
+        "Engineered a raw byte-stream chunking approach that fed documents directly into LLM workflows, removing a costly OCR dependency and improving throughput for document-heavy operations.",
+      technologies: ["Python", "LLM", "Azure", "Pipelines"],
+      label: "In-house project at Allianz",
+      links: [
+        {
+          type: "Employer",
+          href: "https://www.allianz.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "/allianz.gif",
       video: "",
     },
   ],
@@ -240,7 +246,7 @@ export const DATA = {
         {
           title: "Paper",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: "https://scholar.google.com/scholar?q=Analysis+of+the+Stochastic+Modeling+of+EURIBOR+and+SOFR",
+          href: "https://panorama.upv.es/en/ipublic/item/10956963",
         },
       ],
     },
@@ -271,27 +277,27 @@ export const DATA = {
   ],
   proofAssets: [
     {
-      title: "Open-source clearing library",
-      description: "Payment_Clearing repository with implementation code for clearing and netting methods.",
-      href: "https://github.com/roylanmartinez/Payment_Clearing",
-      cta: "View on GitHub",
-    },
-    {
       title: "Published paper: Optimization Proposals to the Payment Clearing",
       description: "Published research on graph-theoretic optimization approaches to interbank clearing.",
       href: "https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98",
       cta: "Read paper",
     },
     {
-      title: "Paper: Stochastic Modeling of EURIBOR and SOFR",
+      title: "Published Paper: Stochastic Modeling of EURIBOR and SOFR",
       description: "Working paper on benchmark-rate modeling assumptions and structural differences.",
-      href: "https://scholar.google.com/scholar?q=Analysis+of+the+Stochastic+Modeling+of+EURIBOR+and+SOFR",
+      href: "https://panorama.upv.es/en/ipublic/item/10956963",
       cta: "Find on Scholar",
+    },
+    {
+      title: "Numlet: numbers to words, in Spanish",
+      description: "Developed in 2019, Numlet is an open-source Python library that spells out any number, up to 10^1200, handling negatives and arbitrary-precision decimals. Published on PyPI, MIT-licensed.",
+      href: "https://github.com/roylanmartinez/Numlet",
+      cta: "View on GitHub",
     },
     {
       title: "Google Scholar profile",
       description: "Public citation profile and publication index.",
-      href: "https://scholar.google.com/citations?view_op=search_authors&mauthors=Roylan+Martinez",
+      href: "https://scholar.google.com/citations?user=2oaaaeQAAAAJ&hl=en",
       cta: "Open profile",
     },
   ],

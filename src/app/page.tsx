@@ -98,7 +98,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
-      <section id="services">
+      <section id="how-i-can-help">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">How I can help</h2>
