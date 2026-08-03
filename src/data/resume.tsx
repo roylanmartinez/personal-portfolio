@@ -36,6 +36,7 @@ export const DATA = {
     label: "Request a 20-minute intro call",
     href: "mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call",
   },
+  regionToggleEnabled: false,
   summary_us:
     "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with published research on interbank payment clearing and continued with a research master's in mathematics on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to independent advisory work for regulated financial institutions on adversarial-resilient AI systems, FedNow and RTP liquidity management under ISO 20022 messaging and systemic/herding risk in model-driven decisions.",
   summary:

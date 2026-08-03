@@ -62,14 +62,15 @@ async function getRegionFromIp(): Promise<RegionVariant> {
 export function RegionProvider({
   children,
   initialRegion,
+  showRegionToggle = false,
 }: {
   children: React.ReactNode;
   initialRegion?: RegionVariant;
+  showRegionToggle?: boolean;
 }) {
   const fallbackRegion = initialRegion ?? "europe";
 
   const [region, setRegion] = useState<RegionVariant>(fallbackRegion);
-  const showRegionToggle = true;
 
   useEffect(() => {
     let cancelled = false;
