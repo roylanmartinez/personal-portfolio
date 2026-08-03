@@ -16,6 +16,7 @@ export default function Navbar() {
   const { region, toggleRegion, showRegionToggle } = useRegionVariant();
   const nextRegionLabel = region === "americas" ? "EU" : "US";
   const nextRegionName = region === "americas" ? "Europe" : "Americas";
+  const shouldShowRegionToggle = DATA.regionToggleEnabled && showRegionToggle;
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30">
@@ -83,7 +84,7 @@ export default function Navbar() {
           orientation="vertical"
           className="h-2/3 m-auto w-px bg-border"
         />
-        {showRegionToggle && (
+        {shouldShowRegionToggle && (
           <>
             <Tooltip>
               <TooltipTrigger asChild>
