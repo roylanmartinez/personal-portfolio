@@ -68,23 +68,7 @@ export function RegionProvider({
 }) {
   const fallbackRegion = initialRegion ?? "europe";
 
-  const [region, setRegion] = useState<RegionVariant>(() => {
-    if (typeof window === "undefined") {
-      return fallbackRegion;
-    }
-
-    const queryRegion = parseRegionFromQuery(window.location.search);
-    if (queryRegion) {
-      return queryRegion;
-    }
-
-    const savedOverride = localStorage.getItem(OVERRIDE_STORAGE_KEY);
-    if (savedOverride === "americas" || savedOverride === "europe") {
-      return savedOverride;
-    }
-
-    return fallbackRegion;
-  });
+  const [region, setRegion] = useState<RegionVariant>(fallbackRegion);
   const showRegionToggle = true;
 
   useEffect(() => {
@@ -93,11 +77,13 @@ export function RegionProvider({
 
     if (queryRegion) {
       localStorage.setItem(OVERRIDE_STORAGE_KEY, queryRegion);
+      setRegion(queryRegion);
       return;
     }
 
     const savedOverride = localStorage.getItem(OVERRIDE_STORAGE_KEY);
     if (savedOverride === "americas" || savedOverride === "europe") {
+      setRegion(savedOverride);
       return;
     }
 
