@@ -17,7 +17,7 @@ import { Java } from "@/components/ui/svgs/java";
 import { Csharp } from "@/components/ui/svgs/csharp";
 
 export const DATA = {
-  regionToggleEnabled: false,
+  regionToggleEnabled: true,
   name: "Roylan Martinez",
   initials: "RM",
   url: "https://roylanmartinez.com",
@@ -187,7 +187,7 @@ summary_us:
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/allianz.gif",
+      image: "/fraud.gif",
       video: "",
     },
     {
@@ -230,7 +230,7 @@ summary_us:
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/allianz.gif",
+      image: "/OCR.gif",
       video: "",
     },
   ],
@@ -287,12 +287,6 @@ summary_us:
       description: "Working paper on benchmark-rate modeling assumptions and structural differences.",
       href: "https://panorama.upv.es/en/ipublic/item/10956963",
       cta: "Find on Scholar",
-    },
-    {
-      title: "Numlet: numbers to words, in Spanish",
-      description: "Developed in 2019, Numlet is an open-source Python library that spells out any number, up to 10^1200, handling negatives and arbitrary-precision decimals. Published on PyPI, MIT-licensed.",
-      href: "https://github.com/roylanmartinez/Numlet",
-      cta: "View on GitHub",
     },
     {
       title: "Google Scholar profile",
