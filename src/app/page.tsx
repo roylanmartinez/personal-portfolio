@@ -16,62 +16,53 @@ import RegionAwareMarkdown from "@/components/region-aware-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
-  const credibilityTickerItems = [...DATA.credibility, ...DATA.credibility];
-
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
+              <BlurFade
+                delay={BLUR_FADE_DELAY * 0.8}
+                className="inline-flex w-fit rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground"
+              >
+                FedNow and instant-payment advisory
+              </BlurFade>
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
                 yOffset={8}
-                text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
+                text="FedNow settles 24/7. Your liquidity management was built for batch windows."
               />
               <RegionAwareDescription
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
-                europeDescription={DATA.description}
-                americasDescription={DATA.description_us}
+                europeDescription="Data Specialist focused on AI/agentic model risk, FedNow expansion readiness, liquidity management and payment-clearing optimization."
+                americasDescription="Europe already solved continuous settlement with SEPA Instant and TIPS. I help US banks and credit unions apply that playbook: prefunding, liquidity transfers, and netting design grounded in model risk work at a major European bank and published research on payment clearing."
               />
               <BlurFade
                 delay={BLUR_FADE_DELAY * 1.2}
                 className="flex flex-col items-start gap-3 pt-1"
               >
-                <div className="credibility-ticker w-full max-w-[640px] overflow-hidden py-1">
-                  <div className="credibility-ticker-track flex w-max items-center gap-2 pr-2">
-                    {credibilityTickerItems.map((item, idx) => (
-                      <span
-                        key={`${item}-${idx}`}
-                        className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-border/70 bg-background/85 px-3 py-1 text-xs text-muted-foreground sm:text-sm"
-                      >
-                        <span
-                          aria-hidden
-                          className="size-1.5 rounded-full bg-gradient-to-r from-emerald-500 to-green-400 shadow-[0_0_0_3px_rgba(34,197,94,0.22)]"
-                        />
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
                 <RegionAwareAmericas>
-                  <div className="mt-3 flex flex-col items-start gap-3 rounded-2xl border border-border/60 bg-background/70 px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:gap-4">
+                  <div className="flex flex-wrap items-center gap-2">
                     <Button asChild size="sm" className="shrink-0">
                       <Link
                         href={DATA.cta.href}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {DATA.cta.label}
+                        Book a 20-minute intro call
                       </Link>
                     </Button>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      Accepting a limited number of advisory engagements · booking for Q4 2026
-                    </p>
+                    <Button asChild size="sm" variant="outline" className="shrink-0">
+                      <Link href="#assessment-offer">See the 2-week assessment</Link>
+                    </Button>
                   </div>
                 </RegionAwareAmericas>
+                <p className="text-sm text-muted-foreground">
+                  Model risk management at a major European bank · Published in payment clearing · PhD researcher, optimization and statistics
+                </p>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
@@ -83,6 +74,45 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <RegionAwareAmericas>
+        <section id="assessment-offer">
+          <div className="mx-auto w-full max-w-2xl">
+            <BlurFade delay={BLUR_FADE_DELAY * 2.1}>
+              <div className="rounded-2xl border border-blue-300/70 bg-blue-50/40 p-5 shadow-sm dark:border-blue-500/50 dark:bg-blue-950/20 sm:p-6">
+                <p className="mb-2 inline-flex rounded-full border border-blue-300/80 bg-blue-100/80 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-800 dark:border-blue-400/60 dark:bg-blue-900/40 dark:text-blue-200">
+                  FedNow liquidity readiness assessment
+                </p>
+                <h2 className="text-xl font-bold sm:text-2xl">A fixed-scope first step before bigger transformation work</h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  You receive a practical blueprint for prefunding, liquidity transfers and netting design in a continuous-settlement operating model.
+                </p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                  <li>- Current-state and gap memo against 24/7 operating requirements</li>
+                  <li>- Written report with prioritized recommendations and sequencing</li>
+                  <li>- 60-minute executive readout with Q&amp;A and decision options</li>
+                </ul>
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm font-semibold text-foreground">From $7,500 fixed fee</p>
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                    Fixed scope · 2 weeks · remote · no long-term commitment
+                  </p>
+                </div>
+                <div className="mt-4">
+                  <Button asChild size="sm">
+                    <Link
+                      href={DATA.cta.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Book a 20-minute intro call
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </BlurFade>
+          </div>
+        </section>
+      </RegionAwareAmericas>
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
@@ -103,11 +133,6 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
             <h2 className="text-xl font-bold">How I can help</h2>
           </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 5.2}>
-            <p className="text-sm font-medium text-foreground">
-              Entry-point offer: FedNow liquidity readiness assessment - fixed scope, 2 weeks.
-            </p>
-          </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 5.3}>
             <p className="text-sm text-muted-foreground">
               Focused engagements, typically 2-12 weeks, in three areas.
@@ -125,10 +150,9 @@ export default function Page() {
               {
                 title: "FedNow & Instant-Payment Liquidity",
                 description:
-                  "24/7 prefunding, liquidity-management transfers and netting design under continuous settlement. Europe solved this with SEPA Instant and TIPS; I bring that playbook to FedNow participants.",
+                  "24/7 prefunding, liquidity-management transfers and netting design under continuous settlement, adapted from SEPA Instant and TIPS operating patterns.",
                 logo: "/icons/fednow.png",
                 logoAlt: "FedNow instant payments",
-                featured: true,
               },
               {
                 title: "Data & AI Engineering pipelines",
@@ -140,29 +164,16 @@ export default function Page() {
             ].map((service) => (
               <div
                 key={service.title}
-                className={`rounded-xl border p-4 transition-colors ${
-                  service.featured
-                    ? "border-blue-300/70 bg-blue-50/40 dark:border-blue-500/50 dark:bg-blue-950/20"
-                    : "bg-background/70"
-                }`}
+                className="rounded-xl border bg-background/70 p-4 transition-colors"
               >
                 {service.logo && (
-                  <div
-                    className={`mb-4 h-12 overflow-hidden rounded-md ${
-                      service.featured ? "bg-[#3b57a4]" : "bg-white"
-                    }`}
-                  >
+                  <div className="mb-4 h-12 overflow-hidden rounded-md bg-white">
                     <img
                       src={service.logo}
                       alt={service.logoAlt ?? service.title}
                       className="h-full w-full object-contain p-2"
                     />
                   </div>
-                )}
-                {service.featured && (
-                  <p className="mb-2 inline-flex rounded-full border border-blue-300/80 bg-blue-100/80 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-800 dark:border-blue-400/60 dark:bg-blue-900/40 dark:text-blue-200">
-                    Featured
-                  </p>
                 )}
                 <h3 className="font-semibold">{service.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
