@@ -241,7 +241,7 @@ summary_us:
       location: "Working paper",
       description:
         "Examines how structural differences between EURIBOR and SOFR break conventional modeling assumptions and what that means for benchmark-rate modeling.",
-      image: "/icons/stochastic.png",
+      image: "/icons/stochastic.PNG",
       links: [
         {
           title: "Paper",
@@ -256,7 +256,7 @@ summary_us:
       location: "Working paper",
       description:
         "Extends the clearing-optimization framework using discrete Markov chain methods and discusses practical implications for interbank netting.",
-      image: "/icons/markov.png",
+      image: "/icons/markov.PNG",
       links: [
         {
           title: "Paper",
@@ -271,7 +271,7 @@ summary_us:
       location: "Published research",
       description:
         "Applies graph theory and mathematical optimization to interbank clearing, showing how alternative netting methods improve traditional compensation logic.",
-      image: "/icons/optimization_payment.png",
+      image: "/icons/optimization_payment.PNG",
       links: [
         {
           title: "Paper",
