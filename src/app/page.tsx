@@ -13,15 +13,27 @@ import { Button } from "@/components/ui/button";
 import RegionAwareDescription from "@/components/region-aware-description";
 import RegionAwareAmericas from "../components/region-aware-americas";
 import RegionAwareMarkdown from "@/components/region-aware-markdown";
+import UsScrollHeader from "@/components/us-scroll-header";
 
 const BLUR_FADE_DELAY = 0.04;
 export default function Page() {
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
+      <RegionAwareAmericas>
+        <UsScrollHeader />
+      </RegionAwareAmericas>
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
+              <RegionAwareAmericas>
+                <BlurFade
+                  delay={BLUR_FADE_DELAY * 0.7}
+                  className="text-xs font-medium tracking-wide text-muted-foreground"
+                >
+                  Roylan Martinez · AI Model Risk &amp; Payments Advisory
+                </BlurFade>
+              </RegionAwareAmericas>
               <BlurFade
                 delay={BLUR_FADE_DELAY * 0.8}
                 className="inline-flex w-fit rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground"
@@ -124,6 +136,11 @@ export default function Page() {
                 europeMarkdown={DATA.summary}
                 americasMarkdown={DATA.summary_us}
               />
+              <RegionAwareAmericas>
+                <p className="mt-4 text-xs text-muted-foreground/80">
+                  Professional and academic references available on request.
+                </p>
+              </RegionAwareAmericas>
             </div>
           </BlurFade>
         </div>

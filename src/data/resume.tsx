@@ -38,7 +38,7 @@ export const DATA = {
     href: "mailto:hello@roylanmartinez.com?subject=20-minute%20intro%20call",
   },
 summary_us:
-    "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with [published research](https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98) on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and [benchmark-rate modeling](https://panorama.upv.es/en/ipublic/item/10956963). Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to [independent advisory work](/#how-i-can-help) for regulated financial institutions on adversarial-resilient AI systems, [FedNow and RTP liquidity management](/#how-i-can-help) under ISO 20022 messaging and systemic/herding risk in model-driven decisions.",
+  "I'm Roylan Martinez. Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with [published research](https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98) on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and [benchmark-rate modeling](https://panorama.upv.es/en/ipublic/item/10956963). Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to [independent advisory work](/#how-i-can-help) for regulated financial institutions on adversarial-resilient AI systems, [FedNow and RTP liquidity management](/#how-i-can-help) under ISO 20022 messaging and systemic/herding risk in model-driven decisions. I'm based in Barcelona, which keeps me close to the SEPA Instant and TIPS operating reality that US instant payments are now converging toward - and I run all client engagements on US business hours.",
   summary:
 "Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with [published research](https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98) on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and benchmark-rate modeling. Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across EU supervisory expectations, including [ECB/EBA guidance](https://www.eba.europa.eu/regulation-and-policy).",
   avatarUrl: "/me.png",
@@ -148,7 +148,7 @@ summary_us:
     {
       school: "Polytechnic University of Valencia",
       href: "https://www.upv.es",
-      degree: "Phd in Optimization & Statistics",
+      degree: "PhD in Optimization & Statistics",
       logoUrl: "/upv.png",
       start: "2026",
       end: "Present",
@@ -241,7 +241,7 @@ summary_us:
       location: "Working paper",
       description:
         "Examines how structural differences between EURIBOR and SOFR break conventional modeling assumptions and what that means for benchmark-rate modeling.",
-      image: "",
+      image: "/icons/stochastic.png",
       links: [
         {
           title: "Paper",
@@ -256,8 +256,14 @@ summary_us:
       location: "Working paper",
       description:
         "Extends the clearing-optimization framework using discrete Markov chain methods and discusses practical implications for interbank netting.",
-      image: "",
-      links: [],
+      image: "/icons/markov.png",
+      links: [
+        {
+          title: "Paper",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: "https://github.com/roylanmartinez/DISCRETE_MARKOV_CHAIN_APPLICATIONS",
+        },
+      ],
     },
     {
       title: "Optimization Proposals to the Payment Clearing",
@@ -265,7 +271,7 @@ summary_us:
       location: "Published research",
       description:
         "Applies graph theory and mathematical optimization to interbank clearing, showing how alternative netting methods improve traditional compensation logic.",
-      image: "",
+      image: "/icons/optimization_payment.png",
       links: [
         {
           title: "Paper",

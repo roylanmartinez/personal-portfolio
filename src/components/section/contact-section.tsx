@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { DATA } from "@/data/resume";
+import RegionAwareAmericas from "@/components/region-aware-americas";
 
 export default function ContactSection() {
   return (
@@ -42,6 +43,14 @@ export default function ContactSection() {
           </Link>
           . I reply within two business days.
         </p>
+        <RegionAwareAmericas>
+          <p className="mx-auto max-w-lg text-muted-foreground text-sm text-balance">
+            Based in Barcelona. I work US hours for client engagements - typically available 8am-1pm ET, later by arrangement.
+          </p>
+          <p className="mx-auto max-w-lg text-muted-foreground/80 text-xs text-balance">
+            Professional and academic references available on request.
+          </p>
+        </RegionAwareAmericas>
       </div>
     </div>
   );
