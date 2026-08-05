@@ -24,9 +24,9 @@ const clashDisplay = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   icons: {
-    icon: "/icons/favicon.PNG",
-    shortcut: "/icons/favicon.PNG",
-    apple: "/icons/favicon.PNG",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   title: {
     default: `${DATA.name} - AI Model Risk & Payments Advisory`,
