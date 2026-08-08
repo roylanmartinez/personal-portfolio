@@ -33,7 +33,7 @@ export default function SchedulePage() {
             What to expect
           </h2>
           <ul className="mt-3 space-y-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            <li>30 minutes.</li>
+            <li>20 minutes.</li>
             <li>Video call.</li>
             <li>No cost for an initial conversation.</li>
             <li>

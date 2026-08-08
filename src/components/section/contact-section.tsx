@@ -28,8 +28,6 @@ export default function ContactSection() {
           The fastest way to see whether I can help is a short call. Send a booking request here{" "}
           <Link
             href={DATA.cta.href}
-            target="_blank"
-            rel="noopener noreferrer"
             className="text-blue-500 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
           >
             {DATA.cta.label}

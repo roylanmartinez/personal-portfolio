@@ -37,12 +37,8 @@ export default function UsScrollHeader() {
           Roylan Martinez
         </Link>
         <Button asChild size="sm">
-          <Link
-            href={DATA.cta.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Book a 30-minute intro call
+          <Link href={DATA.cta.href}>
+            Book a 20-minute intro call
           </Link>
         </Button>
       </div>

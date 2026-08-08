@@ -34,8 +34,8 @@ export const DATA = {
     "Published researcher on payment clearing and benchmark-rate modeling",
   ],
   cta: {
-    label: "Book a 30-minute intro call",
-    href: "https://calendly.com/hello-roylanmartinez/30min",
+    label: "Book a 20-minute intro call",
+    href: "/schedule",
   },
 summary_us:
   "I'm Roylan Martinez. Most of my work sits where financial risk, regulation and AI engineering meet. I started in economics with [published research](https://www.aimspress.com/article/id/6422c7dcba35de6516dcac98) on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and [benchmark-rate modeling](https://panorama.upv.es/en/ipublic/item/10956963). Today I work in Model Risk Management at a major European bank, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across both U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I bring that practitioner perspective to [independent advisory work](/#how-i-can-help) for regulated financial institutions on adversarial-resilient AI systems, [FedNow and RTP liquidity management](/#how-i-can-help) under ISO 20022 messaging and systemic/herding risk in model-driven decisions. I'm based in Barcelona, which keeps me close to the SEPA Instant and TIPS operating reality that US instant payments are now converging toward - and I run all client engagements on US business hours.",

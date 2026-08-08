@@ -11,9 +11,12 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { region, toggleRegion, showRegionToggle } = useRegionVariant();
+  const pathname = usePathname();
   const nextRegionLabel = region === "americas" ? "EU" : "US";
   const nextRegionName = region === "americas" ? "Europe" : "Americas";
   const shouldShowRegionToggle = DATA.regionToggleEnabled && showRegionToggle;
@@ -22,23 +25,35 @@ export default function Navbar() {
   );
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30">
-      <Dock className="z-50 pointer-events-auto relative h-14 p-2 w-fit mx-auto flex gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5">
+    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 px-2 sm:px-0">
+      <Dock className="z-50 pointer-events-auto relative h-14 p-2 w-full max-w-[calc(100vw-1rem)] sm:w-fit mx-auto flex gap-1 sm:gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5 overflow-x-auto">
         {visibleNavbarItems.map((item) => {
           const isExternal = item.href.startsWith("http");
+          const isDownload = "download" in item && item.download;
+          const isInternalNav = !isExternal && !isDownload;
+          const isHomeOnHome = item.href === "/" && pathname === "/";
+          const targetHref = isHomeOnHome ? "#hero" : item.href;
           return (
             <Tooltip key={item.href}>
               <TooltipTrigger asChild>
-                <a
-                  href={item.href}
-                  download={"download" in item && item.download ? "" : undefined}
-                  target={isExternal ? "_blank" : undefined}
-                  rel={isExternal ? "noopener noreferrer" : undefined}
-                >
-                  <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-                    <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
-                  </DockIcon>
-                </a>
+                {isInternalNav ? (
+                  <Link href={targetHref}>
+                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
+                      <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
+                    </DockIcon>
+                  </Link>
+                ) : (
+                  <a
+                    href={item.href}
+                    download={isDownload ? "" : undefined}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                  >
+                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
+                      <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
+                    </DockIcon>
+                  </a>
+                )}
               </TooltipTrigger>
               <TooltipContent
                 side="top"

@@ -59,12 +59,8 @@ export default function Page() {
                 <RegionAwareAmericas>
                   <div className="flex flex-wrap items-center gap-2">
                     <Button asChild size="sm" className="shrink-0">
-                      <Link
-                        href={DATA.cta.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Book a 30-minute intro call
+                      <Link href={DATA.cta.href}>
+                        Book a 20-minute intro call
                       </Link>
                     </Button>
                     <Button asChild size="sm" variant="outline" className="shrink-0">
@@ -111,12 +107,8 @@ export default function Page() {
                 </div>
                 <div className="mt-4">
                   <Button asChild size="sm">
-                    <Link
-                      href={DATA.cta.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Book a 30-minute intro call
+                    <Link href={DATA.cta.href}>
+                      Book a 20-minute intro call
                     </Link>
                   </Button>
                 </div>
@@ -178,23 +170,25 @@ export default function Page() {
                 logo: "/generative.png",
                 logoAlt: "Generative AI and data engineering",
               },
-            ].map((service) => (
-              <div
+            ].map((service, idx) => (
+              <BlurFade
                 key={service.title}
-                className="rounded-xl border bg-background/70 p-4 transition-colors"
+                delay={BLUR_FADE_DELAY * 5.5 + idx * 0.07}
               >
-                {service.logo && (
-                  <div className="mb-4 h-12 overflow-hidden rounded-md bg-white">
-                    <img
-                      src={service.logo}
-                      alt={service.logoAlt ?? service.title}
-                      className="h-full w-full object-contain p-2"
-                    />
-                  </div>
-                )}
-                <h3 className="font-semibold">{service.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
-              </div>
+                <div className="rounded-xl border bg-background/70 p-4 transition-colors">
+                  {service.logo && (
+                    <div className="mb-4 h-12 overflow-hidden rounded-md bg-white">
+                      <img
+                        src={service.logo}
+                        alt={service.logoAlt ?? service.title}
+                        className="h-full w-full object-contain p-2"
+                      />
+                    </div>
+                  )}
+                  <h3 className="font-semibold">{service.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
+                </div>
+              </BlurFade>
             ))}
           </div>
         </div>

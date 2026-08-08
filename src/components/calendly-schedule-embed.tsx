@@ -5,7 +5,7 @@ import Script from "next/script";
 import styles from "@/app/schedule/schedule.module.css";
 
 const CALENDLY_URL =
-  "https://calendly.com/hello-roylanmartinez/30min?text_color=242424&primary_color=000000";
+  "https://calendly.com/hello-roylanmartinez/new-meeting?primary_color=000000";
 
 type EmbedState = "loading" | "embed" | "fallback";
 
