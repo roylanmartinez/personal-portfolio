@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 px-2 sm:px-0">
-      <Dock className="z-50 pointer-events-auto relative h-14 p-2 w-full max-w-[calc(100vw-1rem)] sm:w-fit mx-auto flex gap-1 sm:gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5 overflow-x-auto">
+      <Dock className="z-50 pointer-events-auto relative h-14 p-2 w-fit max-w-[calc(100vw-1rem)] mx-auto flex gap-1 sm:gap-2 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5 overflow-x-auto">
         {visibleNavbarItems.map((item) => {
           const isExternal = item.href.startsWith("http");
           const isDownload = "download" in item && item.download;
