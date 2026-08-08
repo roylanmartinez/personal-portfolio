@@ -81,12 +81,6 @@ summary_us:
         icon: Icons.linkedin,
         navbar: true,
       },
-      GoogleScholar: {
-        name: "Google Scholar",
-        url: "https://scholar.google.com/citations?user=2oaaaeQAAAAJ&hl=en",
-        icon: Icons.globe,
-        navbar: true,
-      },
       email: {
         name: "Send Email",
         url: "mailto:hello@roylanmartinez.com",

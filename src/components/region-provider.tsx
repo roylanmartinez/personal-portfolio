@@ -7,6 +7,7 @@ interface RegionContextValue {
   region: RegionVariant;
   toggleRegion: () => void;
   showRegionToggle: boolean;
+  isRegionResolved: boolean;
 }
 
 const OVERRIDE_STORAGE_KEY = "dev-region-variant-override";
@@ -71,6 +72,7 @@ export function RegionProvider({
   const fallbackRegion = initialRegion ?? "europe";
 
   const [region, setRegion] = useState<RegionVariant>(fallbackRegion);
+  const [isRegionResolved, setIsRegionResolved] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -79,12 +81,14 @@ export function RegionProvider({
     if (queryRegion) {
       localStorage.setItem(OVERRIDE_STORAGE_KEY, queryRegion);
       setRegion(queryRegion);
+      setIsRegionResolved(true);
       return;
     }
 
     const savedOverride = localStorage.getItem(OVERRIDE_STORAGE_KEY);
     if (savedOverride === "americas" || savedOverride === "europe") {
       setRegion(savedOverride);
+      setIsRegionResolved(true);
       return;
     }
 
@@ -95,6 +99,7 @@ export function RegionProvider({
       }
 
       setRegion(ipRegion);
+      setIsRegionResolved(true);
     })();
 
     return () => {
@@ -111,8 +116,8 @@ export function RegionProvider({
   };
 
   const value = useMemo(
-    () => ({ region, toggleRegion, showRegionToggle }),
-    [region, showRegionToggle]
+    () => ({ region, toggleRegion, showRegionToggle, isRegionResolved }),
+    [isRegionResolved, region, showRegionToggle]
   );
 
   return <RegionContext.Provider value={value}>{children}</RegionContext.Provider>;

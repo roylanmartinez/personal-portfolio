@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbar";
+import RegionReadyShell from "@/components/region-ready-shell";
 import { RegionProvider } from "@/components/region-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 
 const cabinetGrotesk = localFont({
   src: "../../public/fonts/CabinetGrotesk-Medium.ttf",
@@ -79,21 +78,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light"  enableSystem={false}>
           <RegionProvider showRegionToggle={DATA.regionToggleEnabled}>
             <TooltipProvider delayDuration={0}>
-              <div className="absolute inset-0 top-0 left-0 right-0 h-[100px] overflow-hidden z-0">
-                <FlickeringGrid
-                  className="h-full w-full"
-                  squareSize={2}
-                  gridGap={2}
-                  style={{
-                    maskImage: "linear-gradient(to bottom, black, transparent)",
-                    WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
-                  }}
-                />
-              </div>
-              <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
-                {children}
-              </div>
-              <Navbar />
+              <RegionReadyShell>{children}</RegionReadyShell>
             </TooltipProvider>
           </RegionProvider>
         </ThemeProvider>
