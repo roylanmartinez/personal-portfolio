@@ -1,0 +1,27 @@
+.embedSurface {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in oklch, var(--card) 85%, var(--muted) 15%);
+  padding: 0.5rem;
+}
+
+.embedFrame {
+  min-height: 700px;
+  border-radius: calc(var(--radius-lg) - 2px);
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.embedFrame :global(.calendly-inline-widget) {
+  height: 700px !important;
+}
+
+@media (max-width: 767px) {
+  .embedFrame {
+    min-height: 1000px;
+  }
+
+  .embedFrame :global(.calendly-inline-widget) {
+    height: 1000px !important;
+  }
+}

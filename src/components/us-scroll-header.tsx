@@ -42,7 +42,7 @@ export default function UsScrollHeader() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Book intro call
+            Book a 30-minute intro call
           </Link>
         </Button>
       </div>
