@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   title: {
-    default: `${DATA.name} - AI Model Risk & Payments Advisory`,
+    default: DATA.name,
     template: `%s | ${DATA.name}`,
   },
-  description: "Independent advisor to financial institutions on adversarial-resilient AI model risk, FedNow and RTP liquidity management and payment clearing optimization under ISO 20022.",
+  description: DATA.metaDescription,
   openGraph: {
-    title: `${DATA.name} - AI Model Risk & Payments Advisory`,
-    description: "Independent advisor to financial institutions on adversarial-resilient AI model risk, FedNow and RTP liquidity management and payment clearing optimization under ISO 20022.",
+    title: DATA.name,
+    description: DATA.metaDescription,
     url: DATA.url,
     siteName: `${DATA.name}`,
     locale: "en_US",

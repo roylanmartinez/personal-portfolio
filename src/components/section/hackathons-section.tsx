@@ -3,23 +3,26 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { DATA } from "@/data/resume";
 import { Timeline, TimelineItem, TimelineConnectItem } from "@/components/timeline";
+import RegionAwareAmericas from "@/components/region-aware-americas";
+import RegionAwareEurope from "@/components/region-aware-europe";
 
 export default function HackathonsSection() {
   return (
-    <section id="hackathons" className="overflow-hidden">
+    <section id="research" className="overflow-hidden">
       <div className="flex min-h-0 flex-col gap-y-8 w-full">
         <div className="flex flex-col gap-y-4 items-center justify-center">
           <div className="flex items-center w-full">
             <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
             <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-              <span className="text-background text-sm font-medium">Research & Publications</span>
+              <span className="text-background text-sm font-medium">Research</span>
             </div>
             <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
           </div>
           <div className="flex flex-col gap-y-3 items-center justify-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Research that informs my practice</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Research</h2>
             <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-              I publish research on the mathematics of payments and benchmark rates and continue it as a doctoral researcher.
+              <RegionAwareEurope>{DATA.researchIntro.europe}</RegionAwareEurope>
+              <RegionAwareAmericas>{DATA.researchIntro.americas}</RegionAwareAmericas>
             </p>
           </div>
         </div>
@@ -73,6 +76,16 @@ export default function HackathonsSection() {
             </TimelineItem>
           ))}
         </Timeline>
+        <div className="flex justify-center">
+          <Link
+            href={DATA.researchProfile.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-blue-600 hover:underline underline-offset-4"
+          >
+            {DATA.researchProfile.label}
+          </Link>
+        </div>
       </div>
     </section>
   );

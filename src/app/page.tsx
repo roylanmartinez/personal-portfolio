@@ -11,46 +11,67 @@ import WorkSection from "@/components/section/work-section";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RegionAwareDescription from "@/components/region-aware-description";
-import RegionAwareAmericas from "../components/region-aware-americas";
+import RegionAwareAmericas from "@/components/region-aware-americas";
+import RegionAwareEurope from "@/components/region-aware-europe";
 import RegionAwareMarkdown from "@/components/region-aware-markdown";
 import UsScrollHeader from "@/components/us-scroll-header";
 
 const BLUR_FADE_DELAY = 0.04;
+
 export default function Page() {
+  const scopingEmailHref = `mailto:${DATA.contact.email}?subject=${encodeURIComponent(
+    DATA.scopingStudy.emailSubject
+  )}`;
+
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
       <RegionAwareAmericas>
         <UsScrollHeader />
       </RegionAwareAmericas>
+
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
+              <RegionAwareEurope>
+                <BlurFade
+                  delay={BLUR_FADE_DELAY * 0.7}
+                  className="text-xs font-medium tracking-wide text-muted-foreground"
+                >
+                  {DATA.hero.europe.eyebrow}
+                </BlurFade>
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY}
+                  className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
+                  yOffset={8}
+                  text={DATA.hero.europe.headline}
+                />
+              </RegionAwareEurope>
               <RegionAwareAmericas>
                 <BlurFade
                   delay={BLUR_FADE_DELAY * 0.7}
                   className="text-xs font-medium tracking-wide text-muted-foreground"
                 >
-                  Roylan Martinez · AI Model Risk &amp; Payments Advisory
+                  {DATA.hero.americas.eyebrow}
                 </BlurFade>
+                <BlurFade
+                  delay={BLUR_FADE_DELAY * 0.8}
+                  className="inline-flex w-fit rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground"
+                >
+                  {DATA.hero.americas.pill}
+                </BlurFade>
+                <BlurFadeText
+                  delay={BLUR_FADE_DELAY}
+                  className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
+                  yOffset={8}
+                  text={DATA.hero.americas.headline}
+                />
               </RegionAwareAmericas>
-              <BlurFade
-                delay={BLUR_FADE_DELAY * 0.8}
-                className="inline-flex w-fit rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground"
-              >
-                FedNow and instant-payment advisory
-              </BlurFade>
-              <BlurFadeText
-                delay={BLUR_FADE_DELAY}
-                className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
-                yOffset={8}
-                text="FedNow settles 24/7. Your liquidity management was built for batch windows."
-              />
               <RegionAwareDescription
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
-                europeDescription="Data Specialist focused on AI/agentic model risk, FedNow expansion readiness, liquidity management and payment-clearing optimization."
-                americasDescription="Europe already solved continuous settlement with SEPA Instant and TIPS. I help US banks and credit unions apply that playbook: prefunding, liquidity transfers, and netting design grounded in model risk work at a major European bank and published research on payment clearing."
+                europeDescription={DATA.hero.europe.description}
+                americasDescription={DATA.hero.americas.description}
               />
               <BlurFade
                 delay={BLUR_FADE_DELAY * 1.2}
@@ -59,18 +80,14 @@ export default function Page() {
                 <RegionAwareAmericas>
                   <div className="flex flex-wrap items-center gap-2">
                     <Button asChild size="sm" className="shrink-0">
-                      <Link href={DATA.cta.href}>
-                        Book a 20-minute intro call
-                      </Link>
+                      <Link href={DATA.cta.href}>{DATA.cta.label}</Link>
                     </Button>
                     <Button asChild size="sm" variant="outline" className="shrink-0">
-                      <Link href="#assessment-offer">See the 2-week assessment</Link>
+                      <Link href="#specification">Read the specification outline</Link>
                     </Button>
                   </div>
                 </RegionAwareAmericas>
-                <p className="text-sm text-muted-foreground">
-                  Model risk management at a major European bank · Published in payment clearing · PhD researcher, optimization and statistics
-                </p>
+                <p className="text-sm text-muted-foreground">{DATA.credibilityLine}</p>
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
@@ -82,34 +99,110 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <RegionAwareAmericas>
-        <section id="assessment-offer">
+        <section id="specification">
           <div className="mx-auto w-full max-w-2xl">
             <BlurFade delay={BLUR_FADE_DELAY * 2.1}>
+              <div className="rounded-2xl border border-border bg-background/70 p-5 shadow-sm sm:p-6">
+                <p className="mb-2 inline-flex rounded-full border border-border bg-muted px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  {DATA.specification.label}
+                </p>
+                <h2 className="text-xl font-bold sm:text-2xl">{DATA.specification.heading}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {DATA.specification.statement}
+                </p>
+                <h3 className="mt-5 text-sm font-semibold">Why heterogeneity</h3>
+                <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                  {DATA.specification.whyHeterogeneity.map((line) => (
+                    <li key={line}>- {line}</li>
+                  ))}
+                </ul>
+              </div>
+            </BlurFade>
+          </div>
+        </section>
+
+        <section id="propagation">
+          <div className="flex min-h-0 flex-col gap-y-4">
+            <BlurFade delay={BLUR_FADE_DELAY * 2.4}>
+              <h2 className="text-xl font-bold">{DATA.propagation.heading}</h2>
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 2.6}>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {DATA.propagation.intro}
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {DATA.propagation.points.map((point) => (
+                  <li key={point}>- {point}</li>
+                ))}
+              </ul>
+            </BlurFade>
+          </div>
+        </section>
+
+        <section id="positioning">
+          <div className="flex min-h-0 flex-col gap-y-4">
+            <BlurFade delay={BLUR_FADE_DELAY * 2.8}>
+              <h2 className="text-xl font-bold">{DATA.positioning.heading}</h2>
+            </BlurFade>
+            <ol className="grid gap-3">
+              {DATA.positioning.items.map((item, idx) => (
+                <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 3 + idx * 0.07}>
+                  <li className="rounded-xl border bg-background/70 p-4">
+                    <h3 className="font-semibold">
+                      <span className="mr-2 text-muted-foreground tabular-nums">{idx + 1}.</span>
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                    {item.links.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-3">
+                        {item.links.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-sm font-medium text-blue-600 hover:underline underline-offset-4"
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </li>
+                </BlurFade>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        <section id="scoping-study">
+          <div className="mx-auto w-full max-w-2xl">
+            <BlurFade delay={BLUR_FADE_DELAY * 3.4}>
               <div className="rounded-2xl border border-blue-300/70 bg-blue-50/40 p-5 shadow-sm dark:border-blue-500/50 dark:bg-blue-950/20 sm:p-6">
                 <p className="mb-2 inline-flex rounded-full border border-blue-300/80 bg-blue-100/80 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-800 dark:border-blue-400/60 dark:bg-blue-900/40 dark:text-blue-200">
-                  FedNow liquidity readiness assessment
+                  {DATA.scopingStudy.label}
                 </p>
-                <h2 className="text-xl font-bold sm:text-2xl">A fixed-scope first step before bigger transformation work</h2>
+                <h2 className="text-xl font-bold sm:text-2xl">{DATA.scopingStudy.heading}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  You receive a practical blueprint for prefunding, liquidity transfers and netting design in a continuous-settlement operating model.
+                  {DATA.scopingStudy.intro}
                 </p>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>- Current-state and gap memo against 24/7 operating requirements</li>
-                  <li>- Written report with prioritized recommendations and sequencing</li>
-                  <li>- 60-minute executive readout with Q&amp;A and decision options</li>
+                <p className="mt-4 text-sm font-semibold">You receive:</p>
+                <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+                  {DATA.scopingStudy.deliverables.map((line) => (
+                    <li key={line}>- {line}</li>
+                  ))}
                 </ul>
-                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-sm font-semibold text-foreground">From $7,500 fixed fee</p>
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
-                    Fixed scope · 2 weeks · remote · no long-term commitment
-                  </p>
-                </div>
-                <div className="mt-4">
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {DATA.scopingStudy.terms}
+                </p>
+                <div className="mt-4 flex flex-wrap items-center gap-2">
                   <Button asChild size="sm">
-                    <Link href={DATA.cta.href}>
-                      Book a 20-minute intro call
-                    </Link>
+                    <a href={scopingEmailHref}>Email: {DATA.scopingStudy.emailSubject}</a>
+                  </Button>
+                  <Button asChild size="sm" variant="outline">
+                    <Link href={DATA.callCta.href}>{DATA.callCta.label}</Link>
                   </Button>
                 </div>
               </div>
@@ -117,6 +210,7 @@ export default function Page() {
           </div>
         </section>
       </RegionAwareAmericas>
+
       <section id="about">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 3}>
@@ -128,96 +222,11 @@ export default function Page() {
                 europeMarkdown={DATA.summary}
                 americasMarkdown={DATA.summary_us}
               />
-              <RegionAwareAmericas>
-                <p className="mt-4 text-xs text-muted-foreground/80">
-                  Professional and academic references available on request.
-                </p>
-              </RegionAwareAmericas>
             </div>
           </BlurFade>
         </div>
       </section>
-      <section id="how-i-can-help">
-        <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 5}>
-            <h2 className="text-xl font-bold">How I can help</h2>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 5.3}>
-            <p className="text-sm text-muted-foreground">
-              Focused engagements, typically 2-12 weeks, in three areas.
-            </p>
-          </BlurFade>
-          <div className="grid gap-3 md:grid-cols-3">
-            {[
-              {
-                title: "AI & Agentic Model Risk",
-                description:
-                  "Validation frameworks for adversarial-resilient AI systems and agentic workflows in regulated environments, including inventory, challenge and control design.",
-                logo: "/mitigation.png",
-                logoAlt: "AI and agentic risk mitigation",
-              },
-              {
-                title: "FedNow & Instant-Payment Liquidity",
-                description:
-                  "24/7 prefunding, liquidity-management transfers and netting design under continuous settlement, adapted from SEPA Instant and TIPS operating patterns.",
-                logo: "/icons/fednow.png",
-                logoAlt: "FedNow instant payments",
-              },
-              {
-                title: "Data & AI Engineering pipelines",
-                description:
-                  "Production-grade pipelines for risk analytics, document workflows and systemic/herding risk monitoring in model-driven decisions.",
-                logo: "/generative.png",
-                logoAlt: "Generative AI and data engineering",
-              },
-            ].map((service, idx) => (
-              <BlurFade
-                key={service.title}
-                delay={BLUR_FADE_DELAY * 5.5 + idx * 0.07}
-              >
-                <div className="rounded-xl border bg-background/70 p-4 transition-colors">
-                  {service.logo && (
-                    <div className="mb-4 h-12 overflow-hidden rounded-md bg-white">
-                      <img
-                        src={service.logo}
-                        alt={service.logoAlt ?? service.title}
-                        className="h-full w-full object-contain p-2"
-                      />
-                    </div>
-                  )}
-                  <h3 className="font-semibold">{service.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{service.description}</p>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section id="proof-assets">
-        <div className="flex min-h-0 flex-col gap-y-4">
-          <BlurFade delay={BLUR_FADE_DELAY * 6}>
-            <h2 className="text-xl font-bold">Proof assets</h2>
-          </BlurFade>
-          <div className="grid gap-3 md:grid-cols-2">
-            {DATA.proofAssets.map((asset, idx) => (
-              <BlurFade key={asset.title} delay={BLUR_FADE_DELAY * 6.2 + idx * 0.05}>
-                <div className="rounded-xl border bg-background/70 p-4">
-                  <h3 className="font-semibold">{asset.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{asset.description}</p>
-                  <Link
-                    href={asset.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center text-sm font-medium text-blue-600 hover:underline underline-offset-4"
-                  >
-                    {asset.cta}
-                  </Link>
-                </div>
-              </BlurFade>
-            ))}
-          </div>
-        </div>
-      </section>
+
       <section id="work">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 5}>
@@ -228,6 +237,7 @@ export default function Page() {
           </BlurFade>
         </div>
       </section>
+
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-6">
           <BlurFade delay={BLUR_FADE_DELAY * 7}>
@@ -276,6 +286,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-4">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
@@ -293,16 +304,19 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>
           <ProjectsSection />
         </BlurFade>
       </section>
-      <section id="hackathons">
+
+      <section id="research">
         <BlurFade delay={BLUR_FADE_DELAY * 13}>
           <HackathonsSection />
         </BlurFade>
       </section>
+
       <section id="contact">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
           <ContactSection />

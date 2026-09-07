@@ -34,12 +34,10 @@ export default function UsScrollHeader() {
           href="#hero"
           className="text-sm font-semibold tracking-tight hover:text-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
         >
-          Roylan Martinez
+          {DATA.name}
         </Link>
         <Button asChild size="sm">
-          <Link href={DATA.cta.href}>
-            Book a 20-minute intro call
-          </Link>
+          <Link href={DATA.cta.href}>{DATA.cta.label}</Link>
         </Button>
       </div>
     </div>

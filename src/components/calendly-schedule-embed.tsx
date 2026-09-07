@@ -229,7 +229,7 @@ export function CalendlyScheduleEmbed({ email }: { email: string }) {
   }
 
   return (
-    <section aria-label="Book a consultation" className="space-y-3">
+    <section aria-label="Book a call" className="space-y-3">
       <div className={styles.embedSurface}>
         <div className={styles.embedFrame}>
           <div
