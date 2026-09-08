@@ -391,17 +391,17 @@ export const DATA = {
       ],
     },
     {
-      title: "Análisis de la modelización estocástica del EURIBOR y SOFR",
+      title: "Analysis of the stochastic modeling of EURIBOR and SOFR",
       dates: "2025",
-      location: "Master's thesis · Polytechnic University of Valencia, RiUnet institutional repository",
+      location: "RiUnet institutional repository",
       description:
         "Analysis of the stochastic modeling of EURIBOR and SOFR. Examines how the structural differences between EURIBOR and SOFR affect conventional stochastic modeling assumptions for benchmark rates.",
       image: "/icons/stochastic.PNG",
       links: [
         {
-          title: "Thesis",
+          title: "Paper",
           icon: <Icons.globe className="h-4 w-4" />,
-          href: THESIS_URL,
+          href: PAPER_URL,
         },
       ],
     },
