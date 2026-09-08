@@ -1,3 +1,4 @@
+import { MotionProvider } from "@/components/motion-provider";
 import RegionReadyShell from "@/components/region-ready-shell";
 import { RegionProvider } from "@/components/region-provider";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -78,7 +79,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light"  enableSystem={false}>
           <RegionProvider showRegionToggle={DATA.regionToggleEnabled}>
             <TooltipProvider delayDuration={0}>
-              <RegionReadyShell>{children}</RegionReadyShell>
+              <MotionProvider>
+                <RegionReadyShell>{children}</RegionReadyShell>
+              </MotionProvider>
             </TooltipProvider>
           </RegionProvider>
         </ThemeProvider>

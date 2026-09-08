@@ -15,9 +15,11 @@ const PAPER_URL = "https://doi.org/10.3934/DSFE.2023005";
 const THESIS_URL = "https://panorama.upv.es/en/ipublic/item/10956963";
 const SCHOLAR_URL = "https://scholar.google.com/citations?user=2oaaaeQAAAAJ&hl=en";
 const CLEARING_CODE_URL = "https://github.com/roylanmartinez/Payment_Clearing";
+const SPEC_URL = "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7431638";
+const SPEC_CODE_URL = "https://github.com/roylanmartinez/heterogeneity-by-design";
 
 export const DATA = {
-  regionToggleEnabled: true,
+  regionToggleEnabled: false,
   name: "Roylan Martinez Vargas",
   initials: "RMV",
   url: "https://roylanmartinez.com",
@@ -42,12 +44,14 @@ export const DATA = {
         "Risk Data Specialist in Model Risk Management at Banco Sabadell, Barcelona. Doctoral researcher in optimization and statistics at the Polytechnic University of Valencia.",
     },
     americas: {
-      eyebrow: "Roylan Martinez Vargas · Liquidity-management agents on instant-payment rails",
+      eyebrow: "Roylan Martinez Vargas · Liquidity management on FedNow and RTP",
       pill: "Heterogeneity by design · FedNow · RTP · ISO 20022",
       headline:
-        "Heterogeneity by design for liquidity-management agents on FedNow and RTP.",
+        "Your liquidity management runs on the same defaults as the bank next door. Under stress, you move together.",
       description:
-        "I am producing a named, publishable specification for how automated liquidity-management agents on FedNow, RTP and ISO 20022 rails should be designed so that a population of them does not converge on the same behavior under stress. Banks, credit unions and certified FedNow Service Providers validate and adopt it through scoped engagements.",
+        "On FedNow and RTP, prefunding, intraday transfers and thresholds are increasingly set by automated agents. Most come from a few providers and ship with similar defaults, so institutions that never coordinated react to stress the same way, and none of them can see it from inside. I design liquidity-management and clearing methods that keep those agents mathematically different by construction, publish them as an open technical specification, and put them in place through advisory and implementation-oversight engagements.",
+      primaryCta: { label: "See the scoping study", href: "#scoping-study" },
+      secondaryCta: { label: "Read the specification", href: "#specification" },
     },
   },
 
@@ -65,36 +69,50 @@ export const DATA = {
     PAPER_URL +
     ") on interbank payment clearing and continued with a research [master's in mathematics](/#education) on stochastic differential equations and [benchmark-rate modeling](" +
     THESIS_URL +
-    "). Today I work in Model Risk Management at Banco Sabadell, governing the lifecycle of quantitative models, machine learning and agentic AI systems, and I am a doctoral researcher in optimization and statistics at the Polytechnic University of Valencia. I work across U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I am based in Barcelona, where SEPA Instant and TIPS have operated continuous settlement for several years, and I write the [specification](/#specification) for the U.S. rails that are converging on the same operating model.",
+    "). After the master's I began a doctorate in optimization and statistics at the Polytechnic University of Valencia, working on stochastic and optimization models for payment systems. Today I work in Model Risk Management at Banco Sabadell, governing the lifecycle of quantitative models, machine learning and agentic AI systems. I work across U.S. and EU supervisory expectations, including SR 11-7 / OCC 2011-12 and ECB/EBA guidance. I am based in Barcelona, where SEPA Instant and TIPS have run continuous settlement for several years. I design heterogeneous liquidity-management and clearing methods for FedNow and RTP, publish them as the [specification](/#specification), and embed them through advisory and implementation-oversight engagements.",
   summary:
     "I work in Model Risk Management at Banco Sabadell in Barcelona, where I am responsible for lifecycle governance of the bank's quantitative and AI models: IRB and capital models, IRRBB, traditional machine learning, and agentic AI systems. The work covers model inventory, validation and monitoring standards, and the adaptation of the model risk framework to AI use cases under [ECB and EBA expectations](https://www.eba.europa.eu/regulation-and-policy).\n\n" +
     "Before Sabadell I spent three years at Allianz in Madrid and Barcelona as a data scientist: first in fraud and quality analytics, then in technical pricing, and finally in the Center of Excellence in Automation & AI, where I built LLM and document-processing capabilities into production pipelines.\n\n" +
-    "My academic background is in economics (BSc, Autonomous University of Barcelona) and mathematics (research MSc, awarded jointly by the University of Valencia and the Polytechnic University of Valencia). My [published research](" +
+    "My academic background is in economics (BSc, Autonomous University of Barcelona) and mathematics (research MSc, awarded jointly by the University of Valencia and the Polytechnic University of Valencia), followed by a doctorate in Optimization and Statistics at the Polytechnic University of Valencia, working on stochastic and optimization models for payment systems. My [published research](" +
     PAPER_URL +
-    ") applies graph theory and optimization to interbank payment clearing. My master's thesis analyzed the stochastic modeling of EURIBOR and SOFR. I am now a doctoral student in Optimization and Statistics at the Polytechnic University of Valencia.",
+    ") applies graph theory and optimization to interbank payment clearing. My master's thesis analyzed the stochastic modeling of EURIBOR and SOFR.",
 
   // U.S. version only.
   specification: {
-    label: "Deliverable",
+    label: "The method",
     heading:
-      "A heterogeneity-by-design specification for liquidity-management agents on instant-payment rails",
+      "Heterogeneity by Design for AI Liquidity Management Agents on Instant Payment Rails: A Conformance Specification",
     statement:
-      "The deliverable is a written, versioned specification for liquidity-management agents operating on 24/7 instant-payment rails: FedNow, RTP, and the ISO 20022 message set they share. It defines the decision functions such an agent performs (prefunding, intraday liquidity transfers, netting and queue management, threshold and alert logic) and, for each function, the design constraints that keep a population of agents heterogeneous: diversity in objective functions, parameterization, data windows and triggers, so that institutions running similar tools do not act in lockstep when conditions change. It includes a validation protocol that a model risk function can run against an agent before deployment, mapped to SR 11-7 / OCC 2011-12 expectations, and a conformance checklist that a Service Provider can apply across its client base. It is being written for publication and will carry a version number, a change log and public references. Engagements are how the specification is validated and delivered; they are not the product.",
+      "The specification applies to software agents that generate or execute Liquidity Management Transfer recommendations on an instant-payment rail such as FedNow. It defines three things. A population-level index of correlated behavior, built from the net internal debt of a payment network under a common rate shock. Design requirements that keep agent behavior different across institutions by construction. And a conformance test that an institution, or a Service Provider acting for many institutions, can run to verify heterogeneity without disclosing proprietary models. Heterogeneity is a property of the population, not of any single institution; it cannot be purchased by one participant alone. Version 1.0 was published on SSRN on September 7, 2026, with a public reference implementation that reproduces every number in it. Thresholds in this version are provisional. Advisory and implementation-oversight engagements are how it reaches an institution. The engagement delivers the method; the method is the object.",
+    version: "Version 1.0 · September 7, 2026",
+    links: [
+      { label: "Specification (SSRN)", href: SPEC_URL },
+      { label: "Reference implementation (GitHub)", href: SPEC_CODE_URL },
+    ],
     whyHeterogeneity: [
       "Continuous settlement removes the batch windows that liquidity management was built around. The gap is being filled by automated agents.",
       "Those agents are increasingly sourced from a small number of providers and tuned to similar defaults.",
-      "Correlated behavior across agents is a liquidity-risk source that no single institution can observe from its own position. The specification is written to keep it from arising by construction.",
+      "Correlated behavior across agents is a liquidity-risk source no single institution can observe from its own position. The specification is written to keep it from arising by construction.",
     ],
   },
-  propagation: {
-    heading: "How it reaches institutions",
-    intro:
-      "Certified FedNow Service Providers connect and operate the rail on behalf of many institutions at once. A specification adopted at the provider level reaches every institution on that provider's platform without a separate project at each one.",
-    // Placeholders. Fill from the same sources as the petition exhibits before publishing.
-    points: [
-      "[N] certified FedNow Service Providers [source].",
-      "[M] banks and credit unions served through those providers, in [K] states [source].",
-      "Engagements with individual banks and credit unions validate the specification against real operating constraints. Engagements with providers put it into their product and conformance process.",
+  audience: {
+    heading: "Who this is for",
+    items: [
+      {
+        title: "Banks",
+        body:
+          "Treasury and payments teams that automate prefunding, intraday transfers or thresholds on FedNow or RTP, and the model risk function that has to validate those agents under SR 11-7 / OCC 2011-12. The scoping study shows where your configuration coincides with common defaults and what to change.",
+      },
+      {
+        title: "Credit unions",
+        body:
+          "Institutions that reach the rail through a Service Provider and run settings they did not choose. The study gives you an inventory of the decisions being made on your behalf and the questions to put to your provider.",
+      },
+      {
+        title: "FedNow Service Providers",
+        body:
+          "You connect and operate the rail for many institutions at once. Adopting the method once covers your whole client base, with no separate project at each institution. The conformance test runs across the institutions you serve without disclosing your models or theirs.",
+      },
     ],
   },
   positioning: {
@@ -103,13 +121,13 @@ export const DATA = {
       {
         title: "Model risk governance at Banco Sabadell",
         body:
-          "In Model Risk Management I govern the lifecycle of the bank's quantitative and AI models, including agentic AI, under ECB and EBA expectations. Writing validation standards for automated decision systems inside a regulated bank is the daily work the specification's validation protocol draws on. I map that protocol to SR 11-7 / OCC 2011-12 so a U.S. model risk function can use it without translation.",
+          "In Model Risk Management I govern the lifecycle of the bank's quantitative and AI models, including agentic AI, under ECB and EBA expectations. Writing validation standards for automated decision systems inside a regulated bank is the daily work the specification's conformance test draws on. I map that test to SR 11-7 / OCC 2011-12 so a U.S. model risk function can use it without translation.",
         links: [],
       },
       {
         title: "Published work on payment clearing",
         body:
-          "Optimization proposals to the payment clearing (Data Science in Finance and Economics, 2023) applies graph theory and optimization to multilateral netting and the capital held against settlement. The netting and queue-management sections of the specification build on it. Code accompanying the paper is public on GitHub.",
+          "Optimization proposals to the payment clearing (Data Science in Finance and Economics, 2023) applies graph theory and optimization to multilateral netting and the capital held against settlement. The specification takes its payment network and its net internal debt measure from this paper. Code accompanying the paper is public on GitHub.",
         links: [
           { label: "Paper", href: PAPER_URL },
           { label: "Code", href: CLEARING_CODE_URL },
@@ -118,7 +136,7 @@ export const DATA = {
       {
         title: "Stochastic modeling of SOFR and EURIBOR",
         body:
-          "My master's thesis (Polytechnic University of Valencia, 2025) analyzes how the construction of SOFR and EURIBOR changes the stochastic models that describe them. Intraday funding cost on an instant rail is a function of those rate dynamics.",
+          "My master's thesis (Polytechnic University of Valencia, 2025) analyzes how the construction of SOFR and EURIBOR changes the stochastic models that describe them. The specification takes its rate-shock engine, a Hull-White short rate with a bounded perturbation, from this thesis.",
         links: [{ label: "Thesis", href: THESIS_URL }],
       },
       {
@@ -133,16 +151,18 @@ export const DATA = {
     label: "First engagement",
     heading: "Scoping study",
     intro:
-      "A fixed-scope study for one bank, one credit union, or one Service Provider. It produces something you keep and something the specification needs.",
+      "A fixed-scope study for one bank, one credit union, or one Service Provider. You get a clear picture of the liquidity decisions you have automated on FedNow or RTP, where your settings match everyone else's, and what to change first.",
     deliverables: [
-      "An inventory of the liquidity-management decisions you currently automate or plan to automate on FedNow or RTP, mapped to the specification's decision functions.",
-      "A heterogeneity assessment: where your configuration coincides with common defaults and where it does not.",
-      "A written memo with findings and recommended next steps, and a draft of the specification section your case informs. You choose whether to be named as a validation partner or kept confidential.",
-      "One working session with treasury, payments and model risk.",
+      "An inventory of the liquidity-management decisions you automate or plan to automate on FedNow or RTP, mapped to the specification's decision functions.",
+      "A heterogeneity assessment: where your prefunding, threshold and netting settings coincide with common defaults and where they do not.",
+      "A written memo with findings, recommended changes and sequencing.",
+      "One working session with treasury, payments and model risk, with a readout and decision options.",
+      "Optional: if your case informs a section of the specification, I draft that section and you choose whether to be named or kept confidential. Offered, not required.",
     ],
-    // Placeholder duration. Set before publishing.
+    price: "$7,500 fixed fee",
+    termsLine: "Fixed scope · Two weeks · Remote · No long-term commitment",
     terms:
-      "Scope and terms are agreed in writing before work starts. Duration is [2 to 3] weeks. Working sessions are scheduled in U.S. Eastern business hours.",
+      "Scope and terms are agreed in writing before work starts. Working sessions are scheduled in U.S. Eastern business hours.",
     emailSubject: "Scoping study",
   },
 
@@ -341,7 +361,7 @@ export const DATA = {
   researchIntro: {
     europe:
       "Publications and thesis work in payment clearing and benchmark-rate modeling, continued as a doctoral researcher.",
-    americas: "Publications and thesis work that the specification builds on.",
+    americas: "The specification, and the publications and thesis work it builds on.",
   },
   researchProfile: {
     label: "Google Scholar profile",
@@ -349,6 +369,27 @@ export const DATA = {
   },
   // Rendered by the timeline in hackathons-section.tsx. `location` is the status label.
   hackathons: [
+    {
+      title:
+        "Heterogeneity by Design for AI Liquidity Management Agents on Instant Payment Rails: A Conformance Specification",
+      dates: "2026",
+      location: "Working paper, version 1.0 · SSRN, September 7, 2026 · Reference implementation on GitHub",
+      description:
+        "Defines a population-level index of correlated behavior among liquidity-management agents on an instant-payment rail, design requirements that keep agent behavior heterogeneous by construction, and a conformance test an institution or a Service Provider can run without disclosing proprietary models. Builds on the 2023 clearing paper and the 2025 thesis.",
+      image: "/icons/stochastic.PNG",
+      links: [
+        {
+          title: "SSRN",
+          icon: <Icons.globe className="h-4 w-4" />,
+          href: SPEC_URL,
+        },
+        {
+          title: "Code",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: SPEC_CODE_URL,
+        },
+      ],
+    },
     {
       title: "Análisis de la modelización estocástica del EURIBOR y SOFR",
       dates: "2025",

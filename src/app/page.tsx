@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import BlurFade from "@/components/magicui/blur-fade";
-import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
@@ -34,68 +33,53 @@ export default function Page() {
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <RegionAwareEurope>
-                <BlurFade
-                  delay={BLUR_FADE_DELAY * 0.7}
-                  className="text-xs font-medium tracking-wide text-muted-foreground"
-                >
+                <p className="text-xs font-medium tracking-wide text-muted-foreground">
                   {DATA.hero.europe.eyebrow}
-                </BlurFade>
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
-                  yOffset={8}
-                  text={DATA.hero.europe.headline}
-                />
+                </p>
+                <h1 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl">
+                  {DATA.hero.europe.headline}
+                </h1>
               </RegionAwareEurope>
               <RegionAwareAmericas>
-                <BlurFade
-                  delay={BLUR_FADE_DELAY * 0.7}
-                  className="text-xs font-medium tracking-wide text-muted-foreground"
-                >
+                <p className="text-xs font-medium tracking-wide text-muted-foreground">
                   {DATA.hero.americas.eyebrow}
-                </BlurFade>
-                <BlurFade
-                  delay={BLUR_FADE_DELAY * 0.8}
-                  className="inline-flex w-fit rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground"
-                >
+                </p>
+                <span className="inline-flex w-fit rounded-full border border-border/70 bg-background/80 px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground">
                   {DATA.hero.americas.pill}
-                </BlurFade>
-                <BlurFadeText
-                  delay={BLUR_FADE_DELAY}
-                  className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
-                  yOffset={8}
-                  text={DATA.hero.americas.headline}
-                />
+                </span>
+                <h1 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl">
+                  {DATA.hero.americas.headline}
+                </h1>
               </RegionAwareAmericas>
               <RegionAwareDescription
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
-                delay={BLUR_FADE_DELAY}
                 europeDescription={DATA.hero.europe.description}
                 americasDescription={DATA.hero.americas.description}
               />
-              <BlurFade
-                delay={BLUR_FADE_DELAY * 1.2}
-                className="flex flex-col items-start gap-3 pt-1"
-              >
+              <div className="flex flex-col items-start gap-3 pt-1">
                 <RegionAwareAmericas>
                   <div className="flex flex-wrap items-center gap-2">
                     <Button asChild size="sm" className="shrink-0">
-                      <Link href={DATA.cta.href}>{DATA.cta.label}</Link>
+                      <Link href={DATA.hero.americas.primaryCta.href}>
+                        {DATA.hero.americas.primaryCta.label}
+                      </Link>
                     </Button>
                     <Button asChild size="sm" variant="outline" className="shrink-0">
-                      <Link href="#specification">Read the specification outline</Link>
+                      <Link href={DATA.hero.americas.secondaryCta.href}>
+                        {DATA.hero.americas.secondaryCta.label}
+                      </Link>
                     </Button>
                   </div>
                 </RegionAwareAmericas>
                 <p className="text-sm text-muted-foreground">{DATA.credibilityLine}</p>
-              </BlurFade>
+              </div>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+            <div className="order-1 md:order-2">
               <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
                 <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
                 <AvatarFallback>{DATA.initials}</AvatarFallback>
               </Avatar>
-            </BlurFade>
+            </div>
           </div>
         </div>
       </section>
@@ -112,6 +96,20 @@ export default function Page() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {DATA.specification.statement}
                 </p>
+                <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+                  <span className="text-muted-foreground">{DATA.specification.version}</span>
+                  {DATA.specification.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center font-medium text-blue-600 hover:underline underline-offset-4"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
                 <h3 className="mt-5 text-sm font-semibold">Why heterogeneity</h3>
                 <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
                   {DATA.specification.whyHeterogeneity.map((line) => (
@@ -123,21 +121,21 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="propagation">
+        <section id="who-this-is-for">
           <div className="flex min-h-0 flex-col gap-y-4">
             <BlurFade delay={BLUR_FADE_DELAY * 2.4}>
-              <h2 className="text-xl font-bold">{DATA.propagation.heading}</h2>
+              <h2 className="text-xl font-bold">{DATA.audience.heading}</h2>
             </BlurFade>
-            <BlurFade delay={BLUR_FADE_DELAY * 2.6}>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {DATA.propagation.intro}
-              </p>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                {DATA.propagation.points.map((point) => (
-                  <li key={point}>- {point}</li>
-                ))}
-              </ul>
-            </BlurFade>
+            <div className="grid gap-3 md:grid-cols-3">
+              {DATA.audience.items.map((item, idx) => (
+                <BlurFade key={item.title} delay={BLUR_FADE_DELAY * 2.6 + idx * 0.07}>
+                  <div className="h-full rounded-xl border bg-background/70 p-4">
+                    <h3 className="font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                  </div>
+                </BlurFade>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -194,7 +192,13 @@ export default function Page() {
                     <li key={line}>- {line}</li>
                   ))}
                 </ul>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm font-semibold text-foreground">{DATA.scopingStudy.price}</p>
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                    {DATA.scopingStudy.termsLine}
+                  </p>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {DATA.scopingStudy.terms}
                 </p>
                 <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -292,16 +296,17 @@ export default function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
-          <div className="flex flex-wrap gap-2">
-            {DATA.skills.map((skill, id) => (
-              <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-                <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
-                  {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
-                  <span className="text-foreground text-sm font-medium">{skill.name}</span>
-                </div>
-              </BlurFade>
+          <BlurFade delay={BLUR_FADE_DELAY * 10} className="flex flex-wrap gap-2">
+            {DATA.skills.map((skill) => (
+              <div
+                key={skill.name}
+                className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2"
+              >
+                {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" />}
+                <span className="text-foreground text-sm font-medium">{skill.name}</span>
+              </div>
             ))}
-          </div>
+          </BlurFade>
         </div>
       </section>
 

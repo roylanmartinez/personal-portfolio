@@ -39,9 +39,8 @@ export default function SchedulePage() {
             </h1>
             <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               A 20-minute video call for treasury, payments and model risk leads at
-              banks, credit unions and FedNow Service Providers who want to discuss
-              the liquidity-agent specification or a scoping study, and for research
-              collaborators.
+              banks, credit unions and FedNow Service Providers who want to discuss a
+              scoping study or the specification.
             </p>
           </header>
 

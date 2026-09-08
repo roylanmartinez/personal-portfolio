@@ -25,13 +25,13 @@ const BlurFade = ({
   children,
   className,
   variant,
-  duration = 0.55,
+  duration = 0.4,
   delay = 0,
-  yOffset = 14,
+  yOffset = 10,
   inView = true,
   inViewMargin = "-8% 0px -8% 0px",
   inViewAmount = 0.2,
-  blur = "6px",
+  blur = "0px",
 }: BlurFadeProps) => {
   const pathname = usePathname();
   const isHomeRoute = pathname === "/";
@@ -44,8 +44,8 @@ const BlurFade = ({
   }, [isHomeRoute]);
 
   const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, scale: 0.96, filter: `blur(${blur})` },
-    visible: { y: 0, opacity: 1, scale: 1, filter: "blur(0px)" },
+    hidden: { y: yOffset, opacity: 0, filter: `blur(${blur})` },
+    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
   };
   const combinedVariants = variant || defaultVariants;
 
@@ -70,7 +70,7 @@ const BlurFade = ({
         ease: shouldSkipHomeAnimation ? "linear" : [0.22, 1, 0.36, 1],
       }}
       className={className}
-      style={{ willChange: "transform, opacity, filter" }}
+      style={{ willChange: "transform, opacity" }}
     >
       {children}
     </motion.div>
